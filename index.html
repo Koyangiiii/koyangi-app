@@ -222,13 +222,15 @@ border-radius: 14px; padding: 20px 22px; margin-bottom: 18px;
 }
 .ct-link {
 display: flex; align-items: center; gap: 13px;
-padding: 11px 14px;
+padding: 14px;
 background: rgba(255,51,51,0.05); border: 1px solid rgba(255,51,51,0.1);
 border-radius: 11px; text-decoration: none; color: #fff;
-font-size: 13px; margin-bottom: 10px;
+font-size: 15px; font-weight: 500; margin-bottom: 10px;
 transition: background .2s, border-color .2s, transform .2s;
 }
 .ct-link:hover { background: rgba(255,51,51,0.1); border-color: rgba(255,51,51,0.3); transform: translateX(4px); }
+.ct-ico { width: 32px; height: 32px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
+.ct-inf { flex-grow: 1; }
 .footer {
 background: #050505; border-top: 2px solid var(--pk3);
 padding: 20px 28px;
@@ -337,21 +339,23 @@ transition: all .2s;
 </div>
 <div id="contact">
 <div class="contact-box">
-<div class="contact-hd"><span style="font-size:17px;">📱</span><h3>ช่องทางติดต่อ</h3></div>
+<div class="contact-hd" style="display: flex; align-items: center; gap: 8px; margin-bottom: 15px;">
+<span style="font-size:17px;">📱</span><h3 style="font-size: 16px; font-weight: 700;">ช่องทางติดต่อ</h3>
+</div>
 <a class="ct-link" href="https://www.facebook.com/k0yang1i" target="_blank">
 <div class="ct-ico" style="background:linear-gradient(135deg,#1877f2,#0855b3);">📘</div>
-<div class="ct-inf"><div class="ct-t">Facebook : Koyangi</div><div class="ct-u">k0yang1i</div></div>
-<span class="ct-arr">→</span>
+<div class="ct-inf"><div class="ct-t">Facebook</div></div>
+<span style="color: rgba(255,255,255,0.3);">→</span>
 </a>
 <a class="ct-link" href="https://lin.ee/UUfn5xL" target="_blank">
 <div class="ct-ico" style="background:linear-gradient(135deg,#00b900,#009000);">💚</div>
-<div class="ct-inf"><div class="ct-t">LINE : Koyangi Official</div><div class="ct-u">lin.ee/UUfn5xL</div></div>
-<span class="ct-arr">→</span>
+<div class="ct-inf"><div class="ct-t">LINE</div></div>
+<span style="color: rgba(255,255,255,0.3);">→</span>
 </a>
 <a class="ct-link" href="https://www.instagram.com/k0yangi_ii" target="_blank">
 <div class="ct-ico" style="background:linear-gradient(135deg,#e1306c,#833ab4);">📸</div>
-<div class="ct-inf"><div class="ct-t">Instagram : k0yangi_ii</div><div class="ct-u">@k0yangi_ii</div></div>
-<span class="ct-arr">→</span>
+<div class="ct-inf"><div class="ct-t">Instagram</div></div>
+<span style="color: rgba(255,255,255,0.3);">→</span>
 </a>
 </div>
 </div>
