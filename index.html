@@ -3,75 +3,127 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Queue Check - Koyangi 🐈‍⬛</title>
-<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&family=Mitr:wght@400;600;700&display=swap" rel="stylesheet">
+<title>Koyangi Queue - Cute Edition 🐾</title>
+<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600&family=Itim&display=swap" rel="stylesheet">
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
 :root {
---pk: #ff3333; --pk2: #ff8080; --pk3: #b30000;
---bg: #050505; --bg2: #0f0a0a; --bg3: #1a0505;
---txt2: rgba(255,255,255,0.7); --txt3: rgba(255,255,255,0.42);
+    --main-pink: #FFB7C5; /* ชมพูพาสเทล */
+    --soft-peach: #FFF0F3; /* พื้นหลังนวลๆ */
+    --accent-mint: #B2E2D2; /* เขียวมินต์ */
+    --txt-brown: #6D4C41; /* น้ำตาลเข้มแทนสีดำเพื่อความนุ่มนวล */
+    --white: #ffffff;
 }
-html { scroll-behavior: smooth; }
-body { font-family: 'Kanit', sans-serif; background: var(--bg); color: #fff; overflow-x: hidden; }
 
-/* Particles Background */
-#pts { position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
-.pt { position: absolute; animation: ptUp linear infinite; opacity: 0; }
-@keyframes ptUp { 
-    0% { transform: translateY(105vh); opacity: 0; } 
-    100% { transform: translateY(-8vh) rotate(360deg); opacity: 0; } 
+body { 
+    font-family: 'Kanit', sans-serif; 
+    background-color: var(--soft-peach); 
+    color: var(--txt-brown);
+    overflow-x: hidden;
+}
+
+h1, h2, .topbar-brand { font-family: 'Itim', cursive; }
+
+/* Particles (เปลี่ยนเป็นฟองอากาศ/หัวใจ) */
+#pts { position: fixed; inset: 0; pointer-events: none; z-index: 0; }
+.pt { position: absolute; animation: floating 6s ease-in-out infinite; opacity: 0.6; }
+@keyframes floating { 
+    0% { transform: translateY(110vh); opacity: 0; } 
+    50% { opacity: 0.8; }
+    100% { transform: translateY(-10vh) translateX(20px); opacity: 0; } 
 }
 
 /* UI Elements */
-.topbar { position: sticky; top: 0; z-index: 100; background: #0a0000; border-bottom: 2px solid var(--pk3); display: flex; align-items: center; justify-content: space-between; padding: 0 24px; height: 56px; box-shadow: 0 2px 20px rgba(179,0,0,0.3); }
-.topbar-brand { font-family: 'Mitr', sans-serif; font-size: 20px; font-weight: 700; color: #ffffff; text-shadow: 0 0 16px rgba(255,51,51,0.7); }
-.topbar-brand span { color: var(--pk); }
+.topbar { 
+    position: sticky; top: 0; z-index: 100; 
+    background: var(--white); 
+    border-bottom: 3px dashed var(--main-pink); 
+    display: flex; align-items: center; justify-content: space-between; 
+    padding: 0 20px; height: 65px;
+}
+.topbar-brand { font-size: 24px; color: var(--main-pink); text-shadow: 1px 1px var(--soft-peach); }
 
-.hero { background: linear-gradient(135deg, #0a0000 0%, #330000 35%, #800000 70%, #ff0000 100%); padding: 50px 32px 40px; text-align: center; position: relative; }
-.hero-title { font-family: 'Mitr', sans-serif; font-size: 36px; font-weight: 700; background: linear-gradient(to bottom, #fff, var(--pk2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.hero { 
+    background: var(--main-pink); 
+    background-image: radial-gradient(circle, #ffcbd5 20%, transparent 20%);
+    background-size: 30px 30px;
+    padding: 40px 20px 60px; text-align: center; color: var(--white);
+    border-radius: 0 0 50px 50px;
+}
+.hero-title { font-size: 38px; text-shadow: 2px 2px rgba(0,0,0,0.1); }
 
-/* --- New Calendar Style --- */
-.calendar-card { max-width: 400px; margin: -20px auto 30px; background: #0f0a0a; border: 1px solid var(--pk3); border-radius: 20px; padding: 15px; position: relative; z-index: 10; box-shadow: 0 15px 40px rgba(0,0,0,0.8); }
-.cal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; padding: 0 10px; }
-.cal-btn { background: none; border: 1px solid var(--pk3); color: white; border-radius: 50%; width: 30px; height: 30px; cursor: pointer; transition: 0.3s; }
-.cal-btn:hover { background: var(--pk); }
-.cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); text-align: center; font-size: 13px; }
-.cal-day-name { color: var(--pk2); font-weight: 600; padding-bottom: 10px; }
-.cal-date { padding: 8px 0; cursor: pointer; border-radius: 10px; transition: 0.2s; position: relative; color: var(--txt2); }
-.cal-date:hover { background: rgba(255,51,51,0.2); color: #fff; }
-.cal-date.active { background: var(--pk); color: #fff; font-weight: 700; box-shadow: 0 0 10px var(--pk); }
-.cal-date.today::after { content: ''; position: absolute; bottom: 4px; left: 50%; transform: translateX(-50%); width: 4px; height: 4px; background: #fff; border-radius: 50%; }
+/* Calendar Style */
+.calendar-card { 
+    max-width: 380px; margin: -30px auto 30px; 
+    background: var(--white); border-radius: 30px; padding: 20px; 
+    position: relative; z-index: 10; 
+    box-shadow: 0 10px 25px rgba(255, 183, 197, 0.3);
+}
+.cal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
+.cal-btn { 
+    background: var(--soft-peach); border: none; color: var(--main-pink); 
+    border-radius: 12px; width: 35px; height: 35px; cursor: pointer; font-size: 20px;
+}
+.cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); text-align: center; gap: 5px; }
+.cal-day-name { color: var(--main-pink); font-weight: 600; font-size: 14px; padding-bottom: 10px; }
+.cal-date { 
+    padding: 10px 0; cursor: pointer; border-radius: 15px; 
+    font-size: 14px; transition: 0.3s; color: var(--txt-brown);
+}
+.cal-date:hover { background: var(--soft-peach); }
+.cal-date.active { background: var(--main-pink); color: white; font-weight: bold; }
+.cal-date.today { border: 2px solid var(--main-pink); }
 
-.search-container { max-width: 550px; margin: 0 auto 30px; padding: 0 20px; }
-.search-input { width: 100%; padding: 12px 20px; border-radius: 25px; border: 1px solid var(--pk3); background: #0f0a0a; color: #fff; outline: none; font-family: 'Kanit'; }
+/* Search & Table */
+.search-container { max-width: 500px; margin: 0 auto 20px; padding: 0 20px; }
+.search-input { 
+    width: 100%; padding: 15px 25px; border-radius: 30px; 
+    border: 2px solid var(--main-pink); background: var(--white); 
+    color: var(--txt-brown); outline: none; font-size: 16px;
+}
 
-/* Table Style */
-.content { max-width: 950px; margin: 0 auto; padding: 0 25px 120px; }
-.q-card { background: #0f0a0a; border: 1px solid rgba(255,51,51,0.2); border-radius: 18px; overflow-x: auto; }
-.q-table { width: 100%; border-collapse: collapse; min-width: 550px; }
-.q-table th { background: rgba(255,51,51,0.15); color: var(--pk2); text-align: left; padding: 15px; font-size: 14px; }
-.q-table td { padding: 14px 15px; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 13px; }
+.content { max-width: 900px; margin: 0 auto; padding: 0 20px 120px; }
+.q-card { 
+    background: var(--white); border-radius: 25px; overflow: hidden; 
+    box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+}
+.q-table { width: 100%; border-collapse: collapse; }
+.q-table th { background: #FFF5F7; color: var(--main-pink); padding: 18px; text-align: left; }
+.q-table td { padding: 18px; border-bottom: 1px solid #FFF0F3; }
 
-/* Status */
-.stt { padding: 4px 10px; border-radius: 6px; font-size: 11px; font-weight: 600; cursor: pointer; }
-.stt-waiting { background: rgba(241, 196, 15, 0.1); color: #f1c40f; border: 1px solid rgba(241, 196, 15, 0.3); }
-.stt-process { background: rgba(52, 152, 219, 0.1); color: #3498db; border: 1px solid rgba(52, 152, 219, 0.3); }
-.stt-done { background: rgba(46, 204, 113, 0.1); color: #2ecc71; border: 1px solid rgba(46, 204, 113, 0.3); }
+/* Status Badges */
+.stt { padding: 6px 14px; border-radius: 20px; font-size: 12px; font-weight: 600; cursor: pointer; border: none; }
+.stt-waiting { background: #FFF9C4; color: #FBC02D; }
+.stt-process { background: #E1F5FE; color: #039BE5; }
+.stt-done { background: #E8F5E9; color: #43A047; }
 
-/* Nav */
-.bottom-nav { position: fixed; bottom: 0; left: 0; right: 0; height: 70px; background: #0a0000; border-top: 2px solid var(--pk3); display: flex; justify-content: space-around; align-items: center; z-index: 1000; }
-.nav-item { display: flex; flex-direction: column; align-items: center; color: var(--txt3); font-size: 11px; cursor: pointer; }
-.nav-add { width: 55px; height: 55px; background: linear-gradient(135deg, var(--pk), var(--pk3)); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-top: -35px; border: 4px solid var(--bg); color: white; font-size: 24px; }
+/* Bottom Nav */
+.bottom-nav { 
+    position: fixed; bottom: 0; left: 0; right: 0; height: 80px; 
+    background: var(--white); border-top: 3px dashed var(--main-pink); 
+    display: flex; justify-content: space-around; align-items: center; z-index: 1000;
+}
+.nav-item { display: flex; flex-direction: column; align-items: center; color: var(--main-pink); font-size: 12px; }
+.nav-add { 
+    width: 65px; height: 65px; background: var(--main-pink); 
+    border-radius: 50%; display: flex; align-items: center; justify-content: center; 
+    margin-top: -45px; border: 6px solid var(--soft-peach); color: white; font-size: 30px;
+    box-shadow: 0 5px 15px rgba(255,183,197,0.5);
+}
 
 /* Modal */
-.modal { position: fixed; inset: 0; background: rgba(0,0,0,0.9); display: none; align-items: center; justify-content: center; z-index: 2000; padding: 20px; }
-.modal.open { display: flex; }
-.modal-content { background: #0f0a0a; width: 100%; max-width: 380px; border: 1px solid var(--pk); border-radius: 20px; padding: 25px; }
-.form-group { margin-bottom: 12px; }
-.form-group label { display: block; font-size: 12px; color: var(--txt2); margin-bottom: 5px; }
-.form-group input, .form-group select { width: 100%; padding: 10px; border-radius: 8px; border: 1px solid #330000; background: #050505; color: white; outline: none; font-family: 'Kanit'; }
-.btn-submit { width: 100%; padding: 12px; background: var(--pk); color: white; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; margin-top: 10px; }
+.modal-content { 
+    background: var(--white); border-radius: 35px; border: 4px solid var(--main-pink);
+    max-width: 380px; padding: 30px; 
+}
+.form-group input, .form-group select { 
+    width: 100%; padding: 12px; border-radius: 15px; border: 2px solid var(--soft-peach);
+    background: #FAFAFA; outline: none; margin-bottom: 10px;
+}
+.btn-submit { 
+    width: 100%; padding: 15px; background: var(--main-pink); color: white; 
+    border: none; border-radius: 20px; font-weight: 600; cursor: pointer;
+}
 </style>
 </head>
 <body>
@@ -79,33 +131,30 @@ body { font-family: 'Kanit', sans-serif; background: var(--bg); color: #fff; ove
 <div id="pts"></div>
 
 <div class="topbar">
-    <div class="topbar-brand">koyang<span>i</span>.queue</div>
-    <div style="font-size: 10px; color: var(--txt3);">Cat Web Design 🐈‍⬛</div>
+    <div class="topbar-brand">Koyangi Store 🐾</div>
+    <div style="font-size: 12px; color: var(--main-pink); font-weight: bold;">Menu ☰</div>
 </div>
 
 <div class="hero">
-    <h1 class="hero-title">เช็คคิวงาน 🐾</h1>
+    <h1 class="hero-title">เช็คคิวงานนะเมี๊ยว~</h1>
+    <p style="font-size: 14px; margin-top: 5px; opacity: 0.9;">ร้านรับทำเว็บสไตล์คุณออมเองค่ะ ✨</p>
 </div>
 
 <div class="calendar-card">
     <div class="cal-header">
         <button class="cal-btn" onclick="changeMonth(-1)">‹</button>
-        <div id="currentMonthLabel" style="font-weight: 700; letter-spacing: 1px;">Month Year</div>
+        <div id="currentMonthLabel" style="font-weight: 700; color: var(--txt-brown);"></div>
         <button class="cal-btn" onclick="changeMonth(1)">›</button>
     </div>
     <div class="cal-grid">
-        <div class="cal-day-name">อา</div><div class="cal-day-name">จ</div><div class="cal-day-name">อ</div>
-        <div class="cal-day-name">พ</div><div class="cal-day-name">พฤ</div><div class="cal-day-name">ศ</div><div class="cal-day-name">ส</div>
+        <div class="cal-day-name">Sun</div><div class="cal-day-name">Mon</div><div class="cal-day-name">Tue</div>
+        <div class="cal-day-name">Wed</div><div class="cal-day-name">Thu</div><div class="cal-day-name">Fri</div><div class="cal-day-name">Sat</div>
     </div>
-    <div id="calDates" class="cal-grid">
-        </div>
-    <div style="text-align: center; margin-top: 10px;">
-        <button onclick="clearDateFilter()" style="background:none; border:none; color:var(--pk2); font-size:11px; cursor:pointer; text-decoration: underline;">แสดงคิวทั้งหมด</button>
-    </div>
+    <div id="calDates" class="cal-grid"></div>
 </div>
 
 <div class="search-container">
-    <input type="text" id="searchInput" class="search-input" placeholder="🔍 ค้นชื่อลูกค้า..." onkeyup="renderTable()">
+    <input type="text" id="searchInput" class="search-input" placeholder="🔍 ค้นหาชื่อคนน่ารัก..." onkeyup="renderTable()">
 </div>
 
 <div class="content">
@@ -113,10 +162,9 @@ body { font-family: 'Kanit', sans-serif; background: var(--bg); color: #fff; ove
         <table class="q-table" id="queueTable">
             <thead>
                 <tr>
-                    <th style="width: 15%;">คิว</th>
-                    <th style="width: 30%;">ชื่อลูกค้า</th>
-                    <th style="width: 25%;">วันที่</th>
-                    <th style="width: 30%;">สถานะ</th>
+                    <th>คิว</th>
+                    <th>รายการ</th>
+                    <th>สถานะ</th>
                 </tr>
             </thead>
             <tbody id="queueBody"></tbody>
@@ -126,142 +174,93 @@ body { font-family: 'Kanit', sans-serif; background: var(--bg); color: #fff; ove
 
 <div class="bottom-nav">
     <div class="nav-item" onclick="location.reload()">
-        <span>🏠</span><span>หน้าหลัก</span>
+        <span style="font-size: 20px;">🏡</span><span>หน้าหลัก</span>
     </div>
     <div class="nav-add" onclick="toggleModal()"><span>+</span></div>
     <div class="nav-item" onclick="resetData()">
-        <span>🗑️</span><span>ล้างข้อมูล</span>
+        <span style="font-size: 20px;">🍓</span><span>ล้างข้อมูล</span>
     </div>
 </div>
 
 <div class="modal" id="addModal">
     <div class="modal-content">
-        <h3 style="text-align:center; color:var(--pk2); margin-bottom:15px;">เพิ่มคิวใหม่ 🐾</h3>
+        <h3 style="text-align:center; color:var(--main-pink); margin-bottom:20px; font-family:'Itim'; font-size: 24px;">เพิ่มคิวใหม่จ้า ✨</h3>
         <div class="form-group">
-            <label>วันที่รับงาน</label>
             <input type="date" id="jobDate">
-        </div>
-        <div class="form-group">
-            <label>ชื่อลูกค้า</label>
-            <input type="text" id="custName" placeholder="Facebook / Line">
-        </div>
-        <div class="form-group">
-            <label>ประเภทงาน</label>
+            <input type="text" id="custName" placeholder="ชื่อเล่นลูกค้า">
             <select id="jobType">
-                <option value="เว็บไบโอพรีเมียม">เว็บไบโอพรีเมียม</option>
-                <option value="เว็บรับเติมเกม">เว็บรับเติมเกม</option>
-                <option value="ป้ายร้านค้า">ป้ายร้านค้า</option>
-                <option value="โลโก้ / ลายน้ำ">โลโก้ / ลายน้ำ</option>
+                <option value="เว็บไบโอพรีเมียม">🎀 เว็บไบโอพรีเมียม</option>
+                <option value="เว็บรับเติมเกม">🎮 เว็บรับเติมเกม</option>
+                <option value="ออกแบบป้าย">🎨 ออกแบบป้ายร้าน</option>
+                <option value="สติกเกอร์">🌸 สติกเกอร์/ลายน้ำ</option>
             </select>
         </div>
-        <button class="btn-submit" onclick="addQueue()">บันทึกข้อมูล</button>
-        <button onclick="toggleModal()" style="background:transparent; color:gray; border:none; width:100%; margin-top:10px; cursor:pointer;">ปิดหน้าต่าง</button>
+        <button class="btn-submit" onclick="addQueue()">บันทึกข้อมูล 🐾</button>
+        <button onclick="toggleModal()" style="background:transparent; color:#aaa; border:none; width:100%; margin-top:15px; cursor:pointer;">ไว้ก่อนนะ</button>
     </div>
 </div>
 
 <script>
-let queues = JSON.parse(localStorage.getItem('koyangi_v3')) || [];
-let currentViewDate = new Date(); // เดือนที่กำลังโชว์ในปฏิทิน
-let selectedDateStr = ""; // วันที่ที่จิ้มเลือก (format: YYYY-MM-DD)
+// (Keep the same logic from previous version, just updating IDs if needed)
+let queues = JSON.parse(localStorage.getItem('koyangi_cute_v1')) || [];
+let currentViewDate = new Date();
+let selectedDateStr = "";
 
-// --- Calendar Logic ---
 const monthsTH = ["มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน", "พฤษภาคม", "มิถุนายน", "กรกฎาคม", "สิงหาคม", "กันยายน", "ตุลาคม", "พฤศจิกายน", "ธันวาคม"];
 
 function renderCalendar() {
     const calDates = document.getElementById('calDates');
     const label = document.getElementById('currentMonthLabel');
     calDates.innerHTML = '';
-
     const year = currentViewDate.getFullYear();
     const month = currentViewDate.getMonth();
-    
     label.innerText = `${monthsTH[month]} ${year + 543}`;
-
     const firstDay = new Date(year, month, 1).getDay();
     const daysInMonth = new Date(year, month + 1, 0).getDate();
 
-    // ช่องว่างก่อนเริ่มวันแรก
-    for (let i = 0; i < firstDay; i++) {
-        calDates.innerHTML += `<div></div>`;
-    }
-
-    // วนลูปสร้างวันที่
+    for (let i = 0; i < firstDay; i++) calDates.innerHTML += `<div></div>`;
     for (let d = 1; d <= daysInMonth; d++) {
         const dateStr = `${year}-${(month+1).toString().padStart(2,'0')}-${d.toString().padStart(2,'0')}`;
-        const isToday = new Date().toISOString().split('T')[0] === dateStr;
         const isActive = selectedDateStr === dateStr;
-        
+        const isToday = new Date().toISOString().split('T')[0] === dateStr;
         const dateDiv = document.createElement('div');
-        dateDiv.className = `cal-date ${isToday ? 'today' : ''} ${isActive ? 'active' : ''}`;
+        dateDiv.className = `cal-date ${isActive ? 'active' : ''} ${isToday ? 'today' : ''}`;
         dateDiv.innerText = d;
-        dateDiv.onclick = () => selectDate(dateStr);
+        dateDiv.onclick = () => { selectedDateStr = (selectedDateStr === dateStr) ? "" : dateStr; renderCalendar(); renderTable(); };
         calDates.appendChild(dateDiv);
     }
 }
 
-function changeMonth(dir) {
-    currentViewDate.setMonth(currentViewDate.getMonth() + dir);
-    renderCalendar();
-}
-
-function selectDate(date) {
-    selectedDateStr = (selectedDateStr === date) ? "" : date; // จิ้มซ้ำเพื่อยกเลิก
-    renderCalendar();
-    renderTable();
-}
-
-function clearDateFilter() {
-    selectedDateStr = "";
-    renderCalendar();
-    renderTable();
-}
-
-// --- Data Logic ---
 function renderTable() {
     const body = document.getElementById('queueBody');
     const searchTerm = document.getElementById('searchInput').value.toUpperCase();
     body.innerHTML = '';
+    const filtered = queues.filter(q => q.name.toUpperCase().includes(searchTerm) && (selectedDateStr === "" || q.rawDate === selectedDateStr));
 
-    const filtered = queues.filter(q => {
-        const matchSearch = q.name.toUpperCase().includes(searchTerm);
-        const matchDate = selectedDateStr === "" || q.rawDate === selectedDateStr;
-        return matchSearch && matchDate;
-    });
-
-    filtered.forEach((q, index) => {
+    filtered.forEach(q => {
         const row = document.createElement('tr');
         let sttClass = q.status === 'done' ? 'stt-done' : (q.status === 'process' ? 'stt-process' : 'stt-waiting');
-        let sttText = q.status === 'done' ? '✅ สำเร็จ' : (q.status === 'process' ? '⚡ ทำงาน' : '⏳ รอคิว');
-
+        let sttText = q.status === 'done' ? 'สำเร็จแล้ว' : (q.status === 'process' ? 'กำลังทำ' : 'รอสักครู่');
         row.innerHTML = `
-            <td>${q.id}</td>
-            <td><strong>${q.name}</strong><br><small style="color:var(--txt3)">${q.type}</small></td>
-            <td>${q.displayDate}</td>
-            <td><span class="stt ${sttClass}" onclick="changeStatus('${q.id}')">${sttText}</span></td>
+            <td style="font-weight:bold; color:var(--main-pink)">${q.id}</td>
+            <td><strong>${q.name}</strong><br><small style="color:#aaa">${q.type}</small></td>
+            <td><button class="stt ${sttClass}" onclick="changeStatus('${q.id}')">${sttText}</button></td>
         `;
         body.appendChild(row);
     });
-    localStorage.setItem('koyangi_v3', JSON.stringify(queues));
+    localStorage.setItem('koyangi_cute_v1', JSON.stringify(queues));
 }
 
 function addQueue() {
     const name = document.getElementById('custName').value;
     const rawDate = document.getElementById('jobDate').value;
-    const type = document.getElementById('jobType').value;
-
-    if(!name || !rawDate) return alert("กรอกข้อมูลให้ครบก่อนน้า");
-
-    const dateParts = rawDate.split('-');
-    const displayDate = `${dateParts[2]}/${dateParts[1]}/${dateParts[0].substring(2)}`;
-
+    if(!name || !rawDate) return alert("ใสข้อมูลให้ครบก่อนนะจ๊ะ");
     queues.push({
-        id: "#" + (queues.length + 1).toString().padStart(3, '0'),
-        name, rawDate, displayDate, type, status: 'waiting'
+        id: "Q" + (queues.length + 1).toString().padStart(2, '0'),
+        name, rawDate, type: document.getElementById('jobType').value, status: 'waiting'
     });
-
     document.getElementById('custName').value = '';
-    toggleModal();
-    renderTable();
+    toggleModal(); renderTable();
 }
 
 function changeStatus(id) {
@@ -272,28 +271,25 @@ function changeStatus(id) {
 }
 
 function toggleModal() { document.getElementById('addModal').classList.toggle('open'); }
-
-function resetData() {
-    if(confirm("ล้างข้อมูลคิวทั้งหมดในเครื่องนี้?")) {
-        queues = [];
-        renderTable();
-    }
-}
+function changeMonth(dir) { currentViewDate.setMonth(currentViewDate.getMonth() + dir); renderCalendar(); }
+function resetData() { if(confirm("ล้างคิวทั้งหมดเลยหรอคะ?")) { queues = []; renderTable(); } }
 
 window.onload = () => {
     document.getElementById('jobDate').value = new Date().toISOString().split('T')[0];
-    renderCalendar();
-    renderTable();
+    renderCalendar(); renderTable();
 };
 
-// Particles (cat & star)
+// Cute Floating Particles
 const P = document.getElementById('pts');
-['✦', '🐾', '🐈‍⬛'].forEach(e => {
-    for (let j = 0; j < 6; j++) {
+['🌸', '🎀', '☁️', '🐾', '✨'].forEach(e => {
+    for (let j = 0; j < 5; j++) {
         const d = document.createElement('div');
         d.className = 'pt';
         d.textContent = e;
-        d.style.cssText = `left:${Math.random()*100}vw; font-size:${10+Math.random()*15}px; color:#ff3333; animation-duration:${8+Math.random()*10}s; animation-delay:${-Math.random()*15}s;`;
+        d.style.left = Math.random() * 100 + 'vw';
+        d.style.fontSize = (15 + Math.random() * 20) + 'px';
+        d.style.animationDuration = (5 + Math.random() * 10) + 's';
+        d.style.animationDelay = -Math.random() * 10 + 's';
         P.appendChild(d);
     }
 });
