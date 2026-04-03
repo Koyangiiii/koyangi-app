@@ -6,7 +6,7 @@
 <title>Koyangi Queue - Live Sync 🐾</title>
 <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600&family=Itim&display=swap" rel="stylesheet">
 <style>
-/* --- ส่วน CSS (เหมือนเดิม) --- */
+/* --- ส่วน CSS (คงเดิม) --- */
 * { margin: 0; padding: 0; box-sizing: border-box; }
 :root {
     --main-pink: #FFB7C5;
@@ -99,8 +99,8 @@ h1, h2, .topbar-brand { font-family: 'Itim', cursive; }
 </div>
 
 <script>
-// --- เชื่อมต่อ Google Sheets ---
-const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzN7a_oBepeepTOOkLnWksjenUqMvZzuWvaChxmwQMbuIh24PYh-iruMN6cpIOXI5RGog/exec';
+// --- เชื่อมต่อ Google Sheets (อัปเดตลิงก์ใหม่แล้ว) ---
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzdRrrrr0X5OeWvIwvur2oCi_6cSmSBs87eo6s-P0TAP4IzMBcrBIjykmqa0sq_ASTM8w/exec';
 
 let queues = JSON.parse(localStorage.getItem('koyangi_float_v1')) || [];
 let currentViewDate = new Date();
