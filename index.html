@@ -20,7 +20,6 @@ body { font-family: 'Kanit', sans-serif; background: var(--bg); color: #fff; ove
 .pt { position: absolute; animation: ptUp linear infinite; opacity: 0; }
 @keyframes ptUp { 
     0% { transform: translateY(105vh); opacity: 0; } 
-    8% { opacity: 0.45; } 92% { opacity: 0.45; } 
     100% { transform: translateY(-8vh) rotate(360deg); opacity: 0; } 
 }
 
@@ -28,46 +27,51 @@ body { font-family: 'Kanit', sans-serif; background: var(--bg); color: #fff; ove
 .topbar { position: sticky; top: 0; z-index: 100; background: #0a0000; border-bottom: 2px solid var(--pk3); display: flex; align-items: center; justify-content: space-between; padding: 0 24px; height: 56px; box-shadow: 0 2px 20px rgba(179,0,0,0.3); }
 .topbar-brand { font-family: 'Mitr', sans-serif; font-size: 20px; font-weight: 700; color: #ffffff; text-shadow: 0 0 16px rgba(255,51,51,0.7); }
 .topbar-brand span { color: var(--pk); }
-.tb-link { padding: 5px 15px; border-radius: 20px; font-size: 12px; font-weight: 600; text-decoration: none; color: #fff; border: 1px solid var(--pk); background: rgba(255,51,51,0.1); transition: all .2s; }
-.tb-link:hover { background: var(--pk); box-shadow: 0 0 15px rgba(255,51,51,0.5); }
 
-.hero { background: linear-gradient(135deg, #0a0000 0%, #330000 35%, #800000 70%, #ff0000 100%); padding: 60px 32px 50px; text-align: center; position: relative; }
-.hero-title { font-family: 'Mitr', sans-serif; font-size: 42px; font-weight: 700; background: linear-gradient(to bottom, #fff, var(--pk2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; filter: drop-shadow(0 0 15px rgba(255,51,51,0.5)); }
-.hero-sub { font-size: 14px; color: rgba(255,255,255,0.8); margin-top: 10px; letter-spacing: 1px; }
+.hero { background: linear-gradient(135deg, #0a0000 0%, #330000 35%, #800000 70%, #ff0000 100%); padding: 50px 32px 40px; text-align: center; position: relative; }
+.hero-title { font-family: 'Mitr', sans-serif; font-size: 36px; font-weight: 700; background: linear-gradient(to bottom, #fff, var(--pk2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
 
-/* Search & Date Filter */
-.search-container { max-width: 550px; margin: -30px auto 30px; padding: 0 20px; position: relative; z-index: 10; }
-.search-input { width: 100%; padding: 18px 25px; border-radius: 35px; border: 2px solid var(--pk3); background: #0f0a0a; color: #fff; font-family: 'Kanit'; font-size: 16px; outline: none; box-shadow: 0 15px 30px rgba(0,0,0,0.6); transition: 0.3s; }
-.date-filter-box { margin-top: 15px; display: flex; align-items: center; justify-content: center; gap: 10px; background: rgba(255,51,51,0.05); padding: 10px; border-radius: 20px; border: 1px solid rgba(255,51,51,0.1); }
-.date-filter-input { background: transparent; border: none; color: var(--pk2); font-family: 'Kanit'; outline: none; cursor: pointer; }
+/* --- New Calendar Style --- */
+.calendar-card { max-width: 400px; margin: -20px auto 30px; background: #0f0a0a; border: 1px solid var(--pk3); border-radius: 20px; padding: 15px; position: relative; z-index: 10; box-shadow: 0 15px 40px rgba(0,0,0,0.8); }
+.cal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; padding: 0 10px; }
+.cal-btn { background: none; border: 1px solid var(--pk3); color: white; border-radius: 50%; width: 30px; height: 30px; cursor: pointer; transition: 0.3s; }
+.cal-btn:hover { background: var(--pk); }
+.cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); text-align: center; font-size: 13px; }
+.cal-day-name { color: var(--pk2); font-weight: 600; padding-bottom: 10px; }
+.cal-date { padding: 8px 0; cursor: pointer; border-radius: 10px; transition: 0.2s; position: relative; color: var(--txt2); }
+.cal-date:hover { background: rgba(255,51,51,0.2); color: #fff; }
+.cal-date.active { background: var(--pk); color: #fff; font-weight: 700; box-shadow: 0 0 10px var(--pk); }
+.cal-date.today::after { content: ''; position: absolute; bottom: 4px; left: 50%; transform: translateX(-50%); width: 4px; height: 4px; background: #fff; border-radius: 50%; }
 
-/* Table Section */
-.content { max-width: 950px; margin: 0 auto; padding: 20px 25px 120px; position: relative; z-index: 1; }
-.q-card { background: linear-gradient(180deg, #0f0a0a 0%, #050505 100%); border: 1px solid rgba(255,51,51,0.2); border-radius: 18px; overflow-x: auto; margin-bottom: 30px; box-shadow: 0 10px 40px rgba(0,0,0,0.4); }
-.q-table { width: 100%; border-collapse: collapse; min-width: 600px; }
-.q-table th { background: rgba(255,51,51,0.15); color: var(--pk2); text-align: left; padding: 18px; font-size: 14px; border-bottom: 2px solid var(--pk3); }
-.q-table td { padding: 16px 18px; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 13.5px; }
+.search-container { max-width: 550px; margin: 0 auto 30px; padding: 0 20px; }
+.search-input { width: 100%; padding: 12px 20px; border-radius: 25px; border: 1px solid var(--pk3); background: #0f0a0a; color: #fff; outline: none; font-family: 'Kanit'; }
 
-.stt { padding: 5px 12px; border-radius: 8px; font-size: 11px; font-weight: 600; display: inline-block; cursor: pointer; white-space: nowrap; }
+/* Table Style */
+.content { max-width: 950px; margin: 0 auto; padding: 0 25px 120px; }
+.q-card { background: #0f0a0a; border: 1px solid rgba(255,51,51,0.2); border-radius: 18px; overflow-x: auto; }
+.q-table { width: 100%; border-collapse: collapse; min-width: 550px; }
+.q-table th { background: rgba(255,51,51,0.15); color: var(--pk2); text-align: left; padding: 15px; font-size: 14px; }
+.q-table td { padding: 14px 15px; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 13px; }
+
+/* Status */
+.stt { padding: 4px 10px; border-radius: 6px; font-size: 11px; font-weight: 600; cursor: pointer; }
 .stt-waiting { background: rgba(241, 196, 15, 0.1); color: #f1c40f; border: 1px solid rgba(241, 196, 15, 0.3); }
 .stt-process { background: rgba(52, 152, 219, 0.1); color: #3498db; border: 1px solid rgba(52, 152, 219, 0.3); }
 .stt-done { background: rgba(46, 204, 113, 0.1); color: #2ecc71; border: 1px solid rgba(46, 204, 113, 0.3); }
 
-/* Bottom Nav */
+/* Nav */
 .bottom-nav { position: fixed; bottom: 0; left: 0; right: 0; height: 70px; background: #0a0000; border-top: 2px solid var(--pk3); display: flex; justify-content: space-around; align-items: center; z-index: 1000; }
-.nav-item { display: flex; flex-direction: column; align-items: center; color: var(--txt3); text-decoration: none; font-size: 11px; cursor: pointer; }
-.nav-add { width: 55px; height: 55px; background: linear-gradient(135deg, var(--pk), var(--pk3)); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-top: -35px; border: 4px solid var(--bg); color: white; font-size: 24px; transition: 0.3s; }
+.nav-item { display: flex; flex-direction: column; align-items: center; color: var(--txt3); font-size: 11px; cursor: pointer; }
+.nav-add { width: 55px; height: 55px; background: linear-gradient(135deg, var(--pk), var(--pk3)); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-top: -35px; border: 4px solid var(--bg); color: white; font-size: 24px; }
 
 /* Modal */
-.modal { position: fixed; inset: 0; background: rgba(0,0,0,0.85); display: none; align-items: center; justify-content: center; z-index: 2000; padding: 20px; }
+.modal { position: fixed; inset: 0; background: rgba(0,0,0,0.9); display: none; align-items: center; justify-content: center; z-index: 2000; padding: 20px; }
 .modal.open { display: flex; }
-.modal-content { background: #0f0a0a; width: 100%; max-width: 400px; border: 1px solid var(--pk); border-radius: 20px; padding: 25px; }
-.form-group { margin-bottom: 15px; }
-.form-group label { display: block; font-size: 13px; color: var(--txt2); margin-bottom: 5px; }
-.form-group input, .form-group select { width: 100%; padding: 12px; border-radius: 10px; border: 1px solid #330000; background: #050505; color: white; outline: none; font-family: 'Kanit'; }
-.btn-submit { width: 100%; padding: 12px; background: var(--pk); color: white; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; margin-top: 10px; font-family: 'Kanit'; }
-
-input[type="date"]::-webkit-calendar-picker-indicator { filter: invert(1); cursor: pointer; }
+.modal-content { background: #0f0a0a; width: 100%; max-width: 380px; border: 1px solid var(--pk); border-radius: 20px; padding: 25px; }
+.form-group { margin-bottom: 12px; }
+.form-group label { display: block; font-size: 12px; color: var(--txt2); margin-bottom: 5px; }
+.form-group input, .form-group select { width: 100%; padding: 10px; border-radius: 8px; border: 1px solid #330000; background: #050505; color: white; outline: none; font-family: 'Kanit'; }
+.btn-submit { width: 100%; padding: 12px; background: var(--pk); color: white; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; margin-top: 10px; }
 </style>
 </head>
 <body>
@@ -76,22 +80,32 @@ input[type="date"]::-webkit-calendar-picker-indicator { filter: invert(1); curso
 
 <div class="topbar">
     <div class="topbar-brand">koyang<span>i</span>.queue</div>
-    <a href="https://lin.ee/UUfn5xL" target="_blank" class="tb-link">💚 ติดต่อแอดมิน</a>
+    <div style="font-size: 10px; color: var(--txt3);">Cat Web Design 🐈‍⬛</div>
 </div>
 
 <div class="hero">
     <h1 class="hero-title">เช็คคิวงาน 🐾</h1>
-    <p class="hero-sub">✦ ข้อมูลบันทึกแยกตามเบราว์เซอร์ของแต่ละเครื่อง ✦</p>
+</div>
+
+<div class="calendar-card">
+    <div class="cal-header">
+        <button class="cal-btn" onclick="changeMonth(-1)">‹</button>
+        <div id="currentMonthLabel" style="font-weight: 700; letter-spacing: 1px;">Month Year</div>
+        <button class="cal-btn" onclick="changeMonth(1)">›</button>
+    </div>
+    <div class="cal-grid">
+        <div class="cal-day-name">อา</div><div class="cal-day-name">จ</div><div class="cal-day-name">อ</div>
+        <div class="cal-day-name">พ</div><div class="cal-day-name">พฤ</div><div class="cal-day-name">ศ</div><div class="cal-day-name">ส</div>
+    </div>
+    <div id="calDates" class="cal-grid">
+        </div>
+    <div style="text-align: center; margin-top: 10px;">
+        <button onclick="clearDateFilter()" style="background:none; border:none; color:var(--pk2); font-size:11px; cursor:pointer; text-decoration: underline;">แสดงคิวทั้งหมด</button>
+    </div>
 </div>
 
 <div class="search-container">
-    <input type="text" id="searchInput" class="search-input" placeholder="🔍 ค้นชื่อลูกค้า..." onkeyup="filterQueue()">
-    
-    <div class="date-filter-box">
-        <span style="font-size: 12px; color: var(--txt2);">📅 ดูตามวัน:</span>
-        <input type="date" id="dateFilter" class="date-filter-input" onchange="filterQueue()">
-        <button onclick="clearDateFilter()" style="background:none; border:none; color:var(--txt3); cursor:pointer; font-size:11px;">[ดูทั้งหมด]</button>
-    </div>
+    <input type="text" id="searchInput" class="search-input" placeholder="🔍 ค้นชื่อลูกค้า..." onkeyup="renderTable()">
 </div>
 
 <div class="content">
@@ -99,39 +113,37 @@ input[type="date"]::-webkit-calendar-picker-indicator { filter: invert(1); curso
         <table class="q-table" id="queueTable">
             <thead>
                 <tr>
-                    <th style="width: 10%;">คิว</th>
-                    <th style="width: 25%;">ชื่อลูกค้า</th>
-                    <th style="width: 25%;">ประเภทงาน</th>
-                    <th style="width: 20%;">วันที่</th>
-                    <th style="width: 20%;">สถานะ</th>
+                    <th style="width: 15%;">คิว</th>
+                    <th style="width: 30%;">ชื่อลูกค้า</th>
+                    <th style="width: 25%;">วันที่</th>
+                    <th style="width: 30%;">สถานะ</th>
                 </tr>
             </thead>
-            <tbody id="queueBody">
-                </tbody>
+            <tbody id="queueBody"></tbody>
         </table>
     </div>
 </div>
 
 <div class="bottom-nav">
-    <div class="nav-item" onclick="window.scrollTo({top:0, behavior:'smooth'})">
+    <div class="nav-item" onclick="location.reload()">
         <span>🏠</span><span>หน้าหลัก</span>
     </div>
     <div class="nav-add" onclick="toggleModal()"><span>+</span></div>
-    <div class="nav-item" onclick="resetAll()">
+    <div class="nav-item" onclick="resetData()">
         <span>🗑️</span><span>ล้างข้อมูล</span>
     </div>
 </div>
 
 <div class="modal" id="addModal">
     <div class="modal-content">
-        <h3>เพิ่มคิวงานใหม่ 🐾</h3>
+        <h3 style="text-align:center; color:var(--pk2); margin-bottom:15px;">เพิ่มคิวใหม่ 🐾</h3>
         <div class="form-group">
             <label>วันที่รับงาน</label>
             <input type="date" id="jobDate">
         </div>
         <div class="form-group">
-            <label>ชื่อลูกค้า (Facebook/Line)</label>
-            <input type="text" id="custName" placeholder="ระบุชื่อลูกค้า">
+            <label>ชื่อลูกค้า</label>
+            <input type="text" id="custName" placeholder="Facebook / Line">
         </div>
         <div class="form-group">
             <label>ประเภทงาน</label>
@@ -142,132 +154,146 @@ input[type="date"]::-webkit-calendar-picker-indicator { filter: invert(1); curso
                 <option value="โลโก้ / ลายน้ำ">โลโก้ / ลายน้ำ</option>
             </select>
         </div>
-        <button class="btn-submit" onclick="addQueue()">บันทึกคิวงาน</button>
-        <button style="background:transparent; color:gray; border:none; width:100%; margin-top:10px; cursor:pointer;" onclick="toggleModal()">ยกเลิก</button>
+        <button class="btn-submit" onclick="addQueue()">บันทึกข้อมูล</button>
+        <button onclick="toggleModal()" style="background:transparent; color:gray; border:none; width:100%; margin-top:10px; cursor:pointer;">ปิดหน้าต่าง</button>
     </div>
 </div>
 
 <script>
-// --- ส่วนการจัดการข้อมูล (Data Management) ---
+let queues = JSON.parse(localStorage.getItem('koyangi_v3')) || [];
+let currentViewDate = new Date(); // เดือนที่กำลังโชว์ในปฏิทิน
+let selectedDateStr = ""; // วันที่ที่จิ้มเลือก (format: YYYY-MM-DD)
 
-let queues = JSON.parse(localStorage.getItem('koyangi_data')) || [];
+// --- Calendar Logic ---
+const monthsTH = ["มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน", "พฤษภาคม", "มิถุนายน", "กรกฎาคม", "สิงหาคม", "กันยายน", "ตุลาคม", "พฤศจิกายน", "ธันวาคม"];
 
+function renderCalendar() {
+    const calDates = document.getElementById('calDates');
+    const label = document.getElementById('currentMonthLabel');
+    calDates.innerHTML = '';
+
+    const year = currentViewDate.getFullYear();
+    const month = currentViewDate.getMonth();
+    
+    label.innerText = `${monthsTH[month]} ${year + 543}`;
+
+    const firstDay = new Date(year, month, 1).getDay();
+    const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+    // ช่องว่างก่อนเริ่มวันแรก
+    for (let i = 0; i < firstDay; i++) {
+        calDates.innerHTML += `<div></div>`;
+    }
+
+    // วนลูปสร้างวันที่
+    for (let d = 1; d <= daysInMonth; d++) {
+        const dateStr = `${year}-${(month+1).toString().padStart(2,'0')}-${d.toString().padStart(2,'0')}`;
+        const isToday = new Date().toISOString().split('T')[0] === dateStr;
+        const isActive = selectedDateStr === dateStr;
+        
+        const dateDiv = document.createElement('div');
+        dateDiv.className = `cal-date ${isToday ? 'today' : ''} ${isActive ? 'active' : ''}`;
+        dateDiv.innerText = d;
+        dateDiv.onclick = () => selectDate(dateStr);
+        calDates.appendChild(dateDiv);
+    }
+}
+
+function changeMonth(dir) {
+    currentViewDate.setMonth(currentViewDate.getMonth() + dir);
+    renderCalendar();
+}
+
+function selectDate(date) {
+    selectedDateStr = (selectedDateStr === date) ? "" : date; // จิ้มซ้ำเพื่อยกเลิก
+    renderCalendar();
+    renderTable();
+}
+
+function clearDateFilter() {
+    selectedDateStr = "";
+    renderCalendar();
+    renderTable();
+}
+
+// --- Data Logic ---
 function renderTable() {
     const body = document.getElementById('queueBody');
+    const searchTerm = document.getElementById('searchInput').value.toUpperCase();
     body.innerHTML = '';
-    
-    queues.forEach((q, index) => {
-        const row = document.createElement('tr');
-        // เพิ่ม attribute สำหรับการกรอง
-        row.setAttribute('data-date', q.rawDate);
-        row.setAttribute('data-name', q.name.toUpperCase());
 
-        let statusHTML = '';
-        if(q.status === 'done') statusHTML = `<span class="stt stt-done" onclick="changeStatus(${index})">✅ สำเร็จแล้ว</span>`;
-        else if(q.status === 'process') statusHTML = `<span class="stt stt-process" onclick="changeStatus(${index})">⚡ ดำเนินการ</span>`;
-        else statusHTML = `<span class="stt stt-waiting" onclick="changeStatus(${index})">⏳ รอคิว</span>`;
+    const filtered = queues.filter(q => {
+        const matchSearch = q.name.toUpperCase().includes(searchTerm);
+        const matchDate = selectedDateStr === "" || q.rawDate === selectedDateStr;
+        return matchSearch && matchDate;
+    });
+
+    filtered.forEach((q, index) => {
+        const row = document.createElement('tr');
+        let sttClass = q.status === 'done' ? 'stt-done' : (q.status === 'process' ? 'stt-process' : 'stt-waiting');
+        let sttText = q.status === 'done' ? '✅ สำเร็จ' : (q.status === 'process' ? '⚡ ทำงาน' : '⏳ รอคิว');
 
         row.innerHTML = `
             <td>${q.id}</td>
-            <td>${q.name}</td>
-            <td>${q.type}</td>
+            <td><strong>${q.name}</strong><br><small style="color:var(--txt3)">${q.type}</small></td>
             <td>${q.displayDate}</td>
-            <td>${statusHTML}</td>
+            <td><span class="stt ${sttClass}" onclick="changeStatus('${q.id}')">${sttText}</span></td>
         `;
         body.appendChild(row);
     });
-    
-    localStorage.setItem('koyangi_data', JSON.stringify(queues));
-    filterQueue(); // กรองทันทีหลังวาดตาราง
+    localStorage.setItem('koyangi_v3', JSON.stringify(queues));
 }
 
 function addQueue() {
-    const rawDate = document.getElementById('jobDate').value;
     const name = document.getElementById('custName').value;
+    const rawDate = document.getElementById('jobDate').value;
     const type = document.getElementById('jobType').value;
 
-    if(!name || !rawDate) return alert("กรุณากรอกข้อมูลให้ครบถ้วนนะคะ");
+    if(!name || !rawDate) return alert("กรอกข้อมูลให้ครบก่อนน้า");
 
-    // แปลงวันที่โชว์ dd/mm/yyyy
     const dateParts = rawDate.split('-');
-    const displayDate = `${dateParts[2]}/${dateParts[1]}/${dateParts[0]}`;
+    const displayDate = `${dateParts[2]}/${dateParts[1]}/${dateParts[0].substring(2)}`;
 
-    const newQueue = {
+    queues.push({
         id: "#" + (queues.length + 1).toString().padStart(3, '0'),
-        name: name,
-        type: type,
-        rawDate: rawDate,
-        displayDate: displayDate,
-        status: 'waiting'
-    };
+        name, rawDate, displayDate, type, status: 'waiting'
+    });
 
-    queues.push(newQueue);
     document.getElementById('custName').value = '';
     toggleModal();
     renderTable();
 }
 
-function changeStatus(index) {
+function changeStatus(id) {
+    const q = queues.find(item => item.id === id);
     const states = ['waiting', 'process', 'done'];
-    let current = states.indexOf(queues[index].status);
-    queues[index].status = states[(current + 1) % states.length];
+    q.status = states[(states.indexOf(q.status) + 1) % 3];
     renderTable();
 }
 
-function filterQueue() {
-    const nameInput = document.getElementById("searchInput").value.toUpperCase();
-    const dateInput = document.getElementById("dateFilter").value;
-    const rows = document.querySelectorAll("#queueBody tr");
+function toggleModal() { document.getElementById('addModal').classList.toggle('open'); }
 
-    rows.forEach(row => {
-        const rowName = row.getAttribute('data-name');
-        const rowDate = row.getAttribute('data-date');
-
-        const matchName = rowName.includes(nameInput);
-        const matchDate = !dateInput || rowDate === dateInput;
-
-        if(matchName && matchDate) {
-            row.style.display = "";
-        } else {
-            row.style.display = "none";
-        }
-    });
-}
-
-function clearDateFilter() {
-    document.getElementById("dateFilter").value = "";
-    filterQueue();
-}
-
-function resetAll() {
-    if(confirm("ยืนยันการล้างข้อมูลทั้งหมดในเครื่องนี้?")) {
+function resetData() {
+    if(confirm("ล้างข้อมูลคิวทั้งหมดในเครื่องนี้?")) {
         queues = [];
         renderTable();
     }
 }
 
-function toggleModal() {
-    document.getElementById('addModal').classList.toggle('open');
-}
-
-// --- เริ่มต้นระบบ ---
 window.onload = () => {
-    // เซตค่าปฏิทินใน Modal เป็นวันปัจจุบัน
-    const today = new Date().toISOString().split('T')[0];
-    document.getElementById('jobDate').value = today;
-    
+    document.getElementById('jobDate').value = new Date().toISOString().split('T')[0];
+    renderCalendar();
     renderTable();
 };
 
-// Particles (คงเดิม)
+// Particles (cat & star)
 const P = document.getElementById('pts');
-const symbols = ['✦', '🐾', '🐈‍⬛'];
-symbols.forEach(e => {
-    for (let j = 0; j < 5; j++) {
+['✦', '🐾', '🐈‍⬛'].forEach(e => {
+    for (let j = 0; j < 6; j++) {
         const d = document.createElement('div');
         d.className = 'pt';
         d.textContent = e;
-        d.style.cssText = `left:${Math.random()*100}vw; font-size:${10+Math.random()*10}px; color:#ff3333; animation-duration:${10+Math.random()*15}s; animation-delay:${-Math.random()*20}s;`;
+        d.style.cssText = `left:${Math.random()*100}vw; font-size:${10+Math.random()*15}px; color:#ff3333; animation-duration:${8+Math.random()*10}s; animation-delay:${-Math.random()*15}s;`;
         P.appendChild(d);
     }
 });
