@@ -65,20 +65,20 @@ body { font-family: 'Kanit', sans-serif; background: var(--bg); color: #fff; ove
 .search-input:focus { border-color: var(--pk); box-shadow: 0 0 20px rgba(255,51,51,0.4); }
 
 /* Content Table */
-.content { max-width: 900px; margin: 0 auto; padding: 20px 25px 120px; position: relative; z-index: 1; }
+.content { max-width: 950px; margin: 0 auto; padding: 20px 25px 120px; position: relative; z-index: 1; }
 .q-card { 
     background: linear-gradient(180deg, #0f0a0a 0%, #050505 100%); 
     border: 1px solid rgba(255,51,51,0.2); border-radius: 18px; 
-    overflow: hidden; margin-bottom: 30px; box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+    overflow-x: auto; margin-bottom: 30px; box-shadow: 0 10px 40px rgba(0,0,0,0.4);
 }
-.q-table { width: 100%; border-collapse: collapse; }
+.q-table { width: 100%; border-collapse: collapse; min-width: 600px; }
 .q-table th { background: rgba(255,51,51,0.15); color: var(--pk2); text-align: left; padding: 18px; font-size: 14px; border-bottom: 2px solid var(--pk3); }
-.q-table td { padding: 16px 18px; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 14px; transition: background 0.5s; }
+.q-table td { padding: 16px 18px; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 13.5px; transition: background 0.5s; }
 .q-table tr:last-child td { border-bottom: none; }
 .q-table tr:hover { background: rgba(255,51,51,0.03); }
 
 /* Status Badges */
-.stt { padding: 5px 12px; border-radius: 8px; font-size: 11px; font-weight: 600; display: inline-block; }
+.stt { padding: 5px 12px; border-radius: 8px; font-size: 11px; font-weight: 600; display: inline-block; white-space: nowrap; }
 .stt-waiting { background: rgba(241, 196, 15, 0.1); color: #f1c40f; border: 1px solid rgba(241, 196, 15, 0.3); }
 .stt-process { background: rgba(52, 152, 219, 0.1); color: #3498db; border: 1px solid rgba(52, 152, 219, 0.3); }
 .stt-done { background: rgba(46, 204, 113, 0.1); color: #2ecc71; border: 1px solid rgba(46, 204, 113, 0.3); }
@@ -117,19 +117,19 @@ body { font-family: 'Kanit', sans-serif; background: var(--bg); color: #fff; ove
 .modal-content {
     background: #0f0a0a; width: 100%; max-width: 400px;
     border: 1px solid var(--pk); border-radius: 20px;
-    padding: 25px; position: relative;
+    padding: 25px; position: relative; max-height: 90vh; overflow-y: auto;
 }
 .modal-content h3 { color: var(--pk2); margin-bottom: 20px; text-align: center; }
 .form-group { margin-bottom: 15px; }
 .form-group label { display: block; font-size: 13px; color: var(--txt2); margin-bottom: 5px; }
 .form-group input, .form-group select {
     width: 100%; padding: 12px; border-radius: 10px;
-    border: 1px solid #330000; background: #050505; color: white; outline: none;
+    border: 1px solid #330000; background: #050505; color: white; outline: none; font-family: 'Kanit';
 }
 .btn-submit {
     width: 100%; padding: 12px; background: var(--pk);
     color: white; border: none; border-radius: 10px;
-    font-weight: 600; cursor: pointer; margin-top: 10px;
+    font-weight: 600; cursor: pointer; margin-top: 10px; font-family: 'Kanit';
 }
 
 .note-box { 
@@ -137,6 +137,11 @@ body { font-family: 'Kanit', sans-serif; background: var(--bg); color: #fff; ove
     border-left: 5px solid var(--pk); margin-top: 20px;
 }
 .footer { background: #050505; border-top: 2px solid var(--pk3); padding: 30px 20px; text-align: center; margin-bottom: 70px; }
+
+/* Custom Date Picker Style */
+input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(1); cursor: pointer;
+}
 </style>
 </head>
 <body>
@@ -154,7 +159,7 @@ body { font-family: 'Kanit', sans-serif; background: var(--bg); color: #fff; ove
 </div>
 
 <div class="search-container">
-    <input type="text" id="searchInput" class="search-input" placeholder="🔍 ค้นหาชื่อเฟสบุ๊ค หรือ เลขคิวของคุณ..." onkeyup="filterQueue()">
+    <input type="text" id="searchInput" class="search-input" placeholder="🔍 ค้นหาชื่อเฟสบุ๊ค, ประเภทงาน หรือวันที่..." onkeyup="filterQueue()">
 </div>
 
 <div class="content">
@@ -162,9 +167,10 @@ body { font-family: 'Kanit', sans-serif; background: var(--bg); color: #fff; ove
         <table class="q-table" id="queueTable">
             <thead>
                 <tr>
-                    <th style="width: 15%;">คิวที่</th>
-                    <th style="width: 35%;">ชื่อลูกค้า</th>
-                    <th style="width: 30%;">ประเภทงาน</th>
+                    <th style="width: 10%;">คิว</th>
+                    <th style="width: 25%;">ชื่อลูกค้า</th>
+                    <th style="width: 25%;">ประเภทงาน</th>
+                    <th style="width: 20%;">วันที่รับงาน</th>
                     <th style="width: 20%;">สถานะ</th>
                 </tr>
             </thead>
@@ -173,25 +179,15 @@ body { font-family: 'Kanit', sans-serif; background: var(--bg); color: #fff; ove
                     <td>#001</td>
                     <td>Somsak Graphic</td>
                     <td>เว็บไบโอพรีเมียม</td>
+                    <td>01/04/2026</td>
                     <td><span class="stt stt-done">✅ สำเร็จแล้ว</span></td>
                 </tr>
                 <tr>
                     <td>#002</td>
                     <td>Mimi Naja</td>
                     <td>เว็บรับเติมเกม</td>
+                    <td>02/04/2026</td>
                     <td><span class="stt stt-process">⚡ กำลังดำเนินการ</span></td>
-                </tr>
-                <tr>
-                    <td>#003</td>
-                    <td>Koyangi Fan</td>
-                    <td>ป้ายร้านค้า</td>
-                    <td><span class="stt stt-waiting">⏳ รอคิว</span></td>
-                </tr>
-                <tr>
-                    <td>#004</td>
-                    <td>P'Cat Developer</td>
-                    <td>โลโก้ / ลายน้ำ</td>
-                    <td><span class="stt stt-waiting">⏳ รอคิว</span></td>
                 </tr>
             </tbody>
         </table>
@@ -225,6 +221,10 @@ body { font-family: 'Kanit', sans-serif; background: var(--bg); color: #fff; ove
     <div class="modal-content">
         <h3>เพิ่มคิวงานใหม่ 🐾</h3>
         <div class="form-group">
+            <label>วันที่รับงาน</label>
+            <input type="date" id="jobDate">
+        </div>
+        <div class="form-group">
             <label>ชื่อลูกค้า (Facebook/Line)</label>
             <input type="text" id="custName" placeholder="เช่น Somchai Design">
         </div>
@@ -247,6 +247,12 @@ body { font-family: 'Kanit', sans-serif; background: var(--bg); color: #fff; ove
 </div>
 
 <script>
+// ตั้งค่าวันที่ปัจจุบันเป็น Default ใน Modal
+window.onload = function() {
+    const today = new Date().toISOString().split('T')[0];
+    document.getElementById('jobDate').value = today;
+};
+
 function filterQueue() {
     const input = document.getElementById("searchInput");
     const filter = input.value.toUpperCase();
@@ -254,15 +260,11 @@ function filterQueue() {
     const tr = table.getElementsByTagName("tr");
 
     for (let i = 1; i < tr.length; i++) {
-        let tdID = tr[i].getElementsByTagName("td")[0];
-        let tdName = tr[i].getElementsByTagName("td")[1];
-        if (tdID || tdName) {
-            let combinedText = (tdID.textContent || tdID.innerText) + " " + (tdName.textContent || tdName.innerText);
-            if (combinedText.toUpperCase().indexOf(filter) > -1) {
-                tr[i].style.display = "";
-            } else {
-                tr[i].style.display = "none";
-            }
+        let textContent = tr[i].textContent || tr[i].innerText;
+        if (textContent.toUpperCase().indexOf(filter) > -1) {
+            tr[i].style.display = "";
+        } else {
+            tr[i].style.display = "none";
         }
     }
 }
@@ -272,13 +274,18 @@ function toggleModal() {
 }
 
 function addQueue() {
+    const dateVal = document.getElementById('jobDate').value;
     const name = document.getElementById('custName').value;
     const type = document.getElementById('jobType').value;
     
-    if(name === "") {
-        alert("กรุณากรอกชื่อลูกค้าด้วยนะคะ");
+    if(name === "" || dateVal === "") {
+        alert("กรุณากรอกข้อมูลให้ครบถ้วนนะคะ");
         return;
     }
+
+    // จัดฟอร์แมตวันที่จาก yyyy-mm-dd เป็น dd/mm/yyyy
+    const dateArr = dateVal.split('-');
+    const formattedDate = `${dateArr[2]}/${dateArr[1]}/${dateArr[0]}`;
 
     const table = document.getElementById("queueTable").getElementsByTagName('tbody')[0];
     const rowCount = table.rows.length + 1;
@@ -289,6 +296,7 @@ function addQueue() {
         <td>${queueID}</td>
         <td>${name}</td>
         <td>${type}</td>
+        <td>${formattedDate}</td>
         <td><span class="stt stt-waiting">⏳ รอคิว</span></td>
     `;
 
