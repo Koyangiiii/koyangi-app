@@ -11,7 +11,6 @@
 --pk: #ff3333; --pk2: #ff8080; --pk3: #b30000;
 --bg: #050505; --bg2: #0f0a0a; --bg3: #1a0505;
 --txt2: rgba(255,255,255,0.7); --txt3: rgba(255,255,255,0.42);
---success: #2ecc71; --wait: #f1c40f; --process: #3498db;
 }
 html { scroll-behavior: smooth; }
 body { font-family: 'Kanit', sans-serif; background: var(--bg); color: #fff; overflow-x: hidden; }
@@ -25,123 +24,50 @@ body { font-family: 'Kanit', sans-serif; background: var(--bg); color: #fff; ove
     100% { transform: translateY(-8vh) rotate(360deg); opacity: 0; } 
 }
 
-/* Topbar */
-.topbar { 
-    position: sticky; top: 0; z-index: 100; background: #0a0000; 
-    border-bottom: 2px solid var(--pk3); display: flex; align-items: center; 
-    justify-content: space-between; padding: 0 24px; height: 56px;
-    box-shadow: 0 2px 20px rgba(179,0,0,0.3);
-}
+/* UI Elements */
+.topbar { position: sticky; top: 0; z-index: 100; background: #0a0000; border-bottom: 2px solid var(--pk3); display: flex; align-items: center; justify-content: space-between; padding: 0 24px; height: 56px; box-shadow: 0 2px 20px rgba(179,0,0,0.3); }
 .topbar-brand { font-family: 'Mitr', sans-serif; font-size: 20px; font-weight: 700; color: #ffffff; text-shadow: 0 0 16px rgba(255,51,51,0.7); }
 .topbar-brand span { color: var(--pk); }
-.tb-link {
-    padding: 5px 15px; border-radius: 20px; font-size: 12px; font-weight: 600;
-    text-decoration: none; color: #fff; border: 1px solid var(--pk);
-    background: rgba(255,51,51,0.1); transition: all .2s;
-}
+.tb-link { padding: 5px 15px; border-radius: 20px; font-size: 12px; font-weight: 600; text-decoration: none; color: #fff; border: 1px solid var(--pk); background: rgba(255,51,51,0.1); transition: all .2s; }
 .tb-link:hover { background: var(--pk); box-shadow: 0 0 15px rgba(255,51,51,0.5); }
 
-/* Hero Section */
-.hero { 
-    background: linear-gradient(135deg, #0a0000 0%, #330000 35%, #800000 70%, #ff0000 100%); 
-    padding: 60px 32px 50px; text-align: center; position: relative; 
-}
-.hero-title { 
-    font-family: 'Mitr', sans-serif; font-size: 42px; font-weight: 700; 
-    background: linear-gradient(to bottom, #fff, var(--pk2)); 
-    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-    filter: drop-shadow(0 0 15px rgba(255,51,51,0.5));
-}
+.hero { background: linear-gradient(135deg, #0a0000 0%, #330000 35%, #800000 70%, #ff0000 100%); padding: 60px 32px 50px; text-align: center; position: relative; }
+.hero-title { font-family: 'Mitr', sans-serif; font-size: 42px; font-weight: 700; background: linear-gradient(to bottom, #fff, var(--pk2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; filter: drop-shadow(0 0 15px rgba(255,51,51,0.5)); }
 .hero-sub { font-size: 14px; color: rgba(255,255,255,0.8); margin-top: 10px; letter-spacing: 1px; }
 
-/* Search Box */
+/* Search & Date Filter */
 .search-container { max-width: 550px; margin: -30px auto 30px; padding: 0 20px; position: relative; z-index: 10; }
-.search-input { 
-    width: 100%; padding: 18px 25px; border-radius: 35px; 
-    border: 2px solid var(--pk3); background: #0f0a0a; color: #fff; 
-    font-family: 'Kanit'; font-size: 16px; outline: none; 
-    box-shadow: 0 15px 30px rgba(0,0,0,0.6); transition: 0.3s;
-}
-.search-input:focus { border-color: var(--pk); box-shadow: 0 0 20px rgba(255,51,51,0.4); }
+.search-input { width: 100%; padding: 18px 25px; border-radius: 35px; border: 2px solid var(--pk3); background: #0f0a0a; color: #fff; font-family: 'Kanit'; font-size: 16px; outline: none; box-shadow: 0 15px 30px rgba(0,0,0,0.6); transition: 0.3s; }
+.date-filter-box { margin-top: 15px; display: flex; align-items: center; justify-content: center; gap: 10px; background: rgba(255,51,51,0.05); padding: 10px; border-radius: 20px; border: 1px solid rgba(255,51,51,0.1); }
+.date-filter-input { background: transparent; border: none; color: var(--pk2); font-family: 'Kanit'; outline: none; cursor: pointer; }
 
-/* Content Table */
+/* Table Section */
 .content { max-width: 950px; margin: 0 auto; padding: 20px 25px 120px; position: relative; z-index: 1; }
-.q-card { 
-    background: linear-gradient(180deg, #0f0a0a 0%, #050505 100%); 
-    border: 1px solid rgba(255,51,51,0.2); border-radius: 18px; 
-    overflow-x: auto; margin-bottom: 30px; box-shadow: 0 10px 40px rgba(0,0,0,0.4);
-}
+.q-card { background: linear-gradient(180deg, #0f0a0a 0%, #050505 100%); border: 1px solid rgba(255,51,51,0.2); border-radius: 18px; overflow-x: auto; margin-bottom: 30px; box-shadow: 0 10px 40px rgba(0,0,0,0.4); }
 .q-table { width: 100%; border-collapse: collapse; min-width: 600px; }
 .q-table th { background: rgba(255,51,51,0.15); color: var(--pk2); text-align: left; padding: 18px; font-size: 14px; border-bottom: 2px solid var(--pk3); }
-.q-table td { padding: 16px 18px; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 13.5px; transition: background 0.5s; }
-.q-table tr:last-child td { border-bottom: none; }
-.q-table tr:hover { background: rgba(255,51,51,0.03); }
+.q-table td { padding: 16px 18px; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 13.5px; }
 
-/* Status Badges */
-.stt { padding: 5px 12px; border-radius: 8px; font-size: 11px; font-weight: 600; display: inline-block; white-space: nowrap; }
+.stt { padding: 5px 12px; border-radius: 8px; font-size: 11px; font-weight: 600; display: inline-block; cursor: pointer; white-space: nowrap; }
 .stt-waiting { background: rgba(241, 196, 15, 0.1); color: #f1c40f; border: 1px solid rgba(241, 196, 15, 0.3); }
 .stt-process { background: rgba(52, 152, 219, 0.1); color: #3498db; border: 1px solid rgba(52, 152, 219, 0.3); }
 .stt-done { background: rgba(46, 204, 113, 0.1); color: #2ecc71; border: 1px solid rgba(46, 204, 113, 0.3); }
 
-/* Bottom Navigation */
-.bottom-nav {
-    position: fixed; bottom: 0; left: 0; right: 0;
-    height: 70px; background: #0a0000; border-top: 2px solid var(--pk3);
-    display: flex; justify-content: space-around; align-items: center;
-    z-index: 1000; box-shadow: 0 -5px 20px rgba(0,0,0,0.8);
-}
-.nav-item {
-    display: flex; flex-direction: column; align-items: center;
-    color: var(--txt3); text-decoration: none; font-size: 11px;
-    transition: 0.3s; cursor: pointer;
-}
-.nav-item span:first-child { font-size: 20px; margin-bottom: 4px; }
-.nav-item.active { color: var(--pk2); }
-.nav-add {
-    width: 55px; height: 55px;
-    background: linear-gradient(135deg, var(--pk), var(--pk3));
-    border-radius: 50%; display: flex; align-items: center; justify-content: center;
-    margin-top: -35px; border: 4px solid var(--bg);
-    box-shadow: 0 4px 15px rgba(255,51,51,0.4);
-    color: white; font-size: 24px; transition: 0.3s;
-}
-.nav-add:hover { transform: scale(1.1) rotate(90deg); }
+/* Bottom Nav */
+.bottom-nav { position: fixed; bottom: 0; left: 0; right: 0; height: 70px; background: #0a0000; border-top: 2px solid var(--pk3); display: flex; justify-content: space-around; align-items: center; z-index: 1000; }
+.nav-item { display: flex; flex-direction: column; align-items: center; color: var(--txt3); text-decoration: none; font-size: 11px; cursor: pointer; }
+.nav-add { width: 55px; height: 55px; background: linear-gradient(135deg, var(--pk), var(--pk3)); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-top: -35px; border: 4px solid var(--bg); color: white; font-size: 24px; transition: 0.3s; }
 
-/* Modal Style */
-.modal {
-    position: fixed; inset: 0; background: rgba(0,0,0,0.85);
-    display: none; align-items: center; justify-content: center;
-    z-index: 2000; padding: 20px;
-}
+/* Modal */
+.modal { position: fixed; inset: 0; background: rgba(0,0,0,0.85); display: none; align-items: center; justify-content: center; z-index: 2000; padding: 20px; }
 .modal.open { display: flex; }
-.modal-content {
-    background: #0f0a0a; width: 100%; max-width: 400px;
-    border: 1px solid var(--pk); border-radius: 20px;
-    padding: 25px; position: relative; max-height: 90vh; overflow-y: auto;
-}
-.modal-content h3 { color: var(--pk2); margin-bottom: 20px; text-align: center; }
+.modal-content { background: #0f0a0a; width: 100%; max-width: 400px; border: 1px solid var(--pk); border-radius: 20px; padding: 25px; }
 .form-group { margin-bottom: 15px; }
 .form-group label { display: block; font-size: 13px; color: var(--txt2); margin-bottom: 5px; }
-.form-group input, .form-group select {
-    width: 100%; padding: 12px; border-radius: 10px;
-    border: 1px solid #330000; background: #050505; color: white; outline: none; font-family: 'Kanit';
-}
-.btn-submit {
-    width: 100%; padding: 12px; background: var(--pk);
-    color: white; border: none; border-radius: 10px;
-    font-weight: 600; cursor: pointer; margin-top: 10px; font-family: 'Kanit';
-}
+.form-group input, .form-group select { width: 100%; padding: 12px; border-radius: 10px; border: 1px solid #330000; background: #050505; color: white; outline: none; font-family: 'Kanit'; }
+.btn-submit { width: 100%; padding: 12px; background: var(--pk); color: white; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; margin-top: 10px; font-family: 'Kanit'; }
 
-.note-box { 
-    background: rgba(255,51,51,0.05); padding: 22px; border-radius: 15px; 
-    border-left: 5px solid var(--pk); margin-top: 20px;
-}
-.footer { background: #050505; border-top: 2px solid var(--pk3); padding: 30px 20px; text-align: center; margin-bottom: 70px; }
-
-/* Custom Date Picker Style */
-input[type="date"]::-webkit-calendar-picker-indicator {
-    filter: invert(1); cursor: pointer;
-}
+input[type="date"]::-webkit-calendar-picker-indicator { filter: invert(1); cursor: pointer; }
 </style>
 </head>
 <body>
@@ -155,11 +81,17 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
 <div class="hero">
     <h1 class="hero-title">เช็คคิวงาน 🐾</h1>
-    <p class="hero-sub">✦ ตรวจสอบสถานะงานออกแบบของ Koyangi Store ✦</p>
+    <p class="hero-sub">✦ ข้อมูลบันทึกแยกตามเบราว์เซอร์ของแต่ละเครื่อง ✦</p>
 </div>
 
 <div class="search-container">
-    <input type="text" id="searchInput" class="search-input" placeholder="🔍 ค้นหาชื่อเฟสบุ๊ค, ประเภทงาน หรือวันที่..." onkeyup="filterQueue()">
+    <input type="text" id="searchInput" class="search-input" placeholder="🔍 ค้นชื่อลูกค้า..." onkeyup="filterQueue()">
+    
+    <div class="date-filter-box">
+        <span style="font-size: 12px; color: var(--txt2);">📅 ดูตามวัน:</span>
+        <input type="date" id="dateFilter" class="date-filter-input" onchange="filterQueue()">
+        <button onclick="clearDateFilter()" style="background:none; border:none; color:var(--txt3); cursor:pointer; font-size:11px;">[ดูทั้งหมด]</button>
+    </div>
 </div>
 
 <div class="content">
@@ -170,50 +102,23 @@ input[type="date"]::-webkit-calendar-picker-indicator {
                     <th style="width: 10%;">คิว</th>
                     <th style="width: 25%;">ชื่อลูกค้า</th>
                     <th style="width: 25%;">ประเภทงาน</th>
-                    <th style="width: 20%;">วันที่รับงาน</th>
+                    <th style="width: 20%;">วันที่</th>
                     <th style="width: 20%;">สถานะ</th>
                 </tr>
             </thead>
-            <tbody>
-                <tr>
-                    <td>#001</td>
-                    <td>Somsak Graphic</td>
-                    <td>เว็บไบโอพรีเมียม</td>
-                    <td>01/04/2026</td>
-                    <td><span class="stt stt-done">✅ สำเร็จแล้ว</span></td>
-                </tr>
-                <tr>
-                    <td>#002</td>
-                    <td>Mimi Naja</td>
-                    <td>เว็บรับเติมเกม</td>
-                    <td>02/04/2026</td>
-                    <td><span class="stt stt-process">⚡ กำลังดำเนินการ</span></td>
-                </tr>
-            </tbody>
+            <tbody id="queueBody">
+                </tbody>
         </table>
-    </div>
-
-    <div class="note-box">
-        <h4 style="color:var(--pk2); margin-bottom:12px;">💡 ความหมายของสถานะ</h4>
-        <ul style="list-style: none; font-size: 13px; color: #ccc; line-height: 1.8;">
-            <li><strong style="color:#f1c40f;">⏳ รอคิว :</strong> ได้รับบรีฟแล้ว อยู่ในลำดับรอเริ่มงาน</li>
-            <li><strong style="color:#3498db;">⚡ กำลังดำเนินการ :</strong> แอดมินกำลังจัดทำเว็บ/งานป้ายให้คุณอยู่ค่ะ</li>
-            <li><strong style="color:#2ecc71;">✅ สำเร็จแล้ว :</strong> งานเสร็จเรียบร้อย! สามารถทักแชทรับลิงก์ได้เลย</li>
-        </ul>
     </div>
 </div>
 
 <div class="bottom-nav">
-    <div class="nav-item active" onclick="window.scrollTo({top:0, behavior:'smooth'})">
-        <span>🏠</span>
-        <span>หน้าหลัก</span>
+    <div class="nav-item" onclick="window.scrollTo({top:0, behavior:'smooth'})">
+        <span>🏠</span><span>หน้าหลัก</span>
     </div>
-    <div class="nav-add" onclick="toggleModal()">
-        <span>+</span>
-    </div>
-    <div class="nav-item" onclick="alert('✦ Koyangi Store ✦\nร้านรับทำเว็บไซต์ไบโอและงานกราฟิกครบวงจร\nเปิดให้บริการ 24 ชม. (ตามคิวงาน)')">
-        <span>📋</span>
-        <span>รายละเอียด</span>
+    <div class="nav-add" onclick="toggleModal()"><span>+</span></div>
+    <div class="nav-item" onclick="resetAll()">
+        <span>🗑️</span><span>ล้างข้อมูล</span>
     </div>
 </div>
 
@@ -226,7 +131,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
         </div>
         <div class="form-group">
             <label>ชื่อลูกค้า (Facebook/Line)</label>
-            <input type="text" id="custName" placeholder="เช่น Somchai Design">
+            <input type="text" id="custName" placeholder="ระบุชื่อลูกค้า">
         </div>
         <div class="form-group">
             <label>ประเภทงาน</label>
@@ -242,30 +147,102 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     </div>
 </div>
 
-<div class="footer">
-    <div class="footer-text">✦ KOYANGI STORE ✦ ระบบเช็คคิวงานอัตโนมัติ 🐈‍⬛</div>
-</div>
-
 <script>
-// ตั้งค่าวันที่ปัจจุบันเป็น Default ใน Modal
-window.onload = function() {
-    const today = new Date().toISOString().split('T')[0];
-    document.getElementById('jobDate').value = today;
-};
+// --- ส่วนการจัดการข้อมูล (Data Management) ---
+
+let queues = JSON.parse(localStorage.getItem('koyangi_data')) || [];
+
+function renderTable() {
+    const body = document.getElementById('queueBody');
+    body.innerHTML = '';
+    
+    queues.forEach((q, index) => {
+        const row = document.createElement('tr');
+        // เพิ่ม attribute สำหรับการกรอง
+        row.setAttribute('data-date', q.rawDate);
+        row.setAttribute('data-name', q.name.toUpperCase());
+
+        let statusHTML = '';
+        if(q.status === 'done') statusHTML = `<span class="stt stt-done" onclick="changeStatus(${index})">✅ สำเร็จแล้ว</span>`;
+        else if(q.status === 'process') statusHTML = `<span class="stt stt-process" onclick="changeStatus(${index})">⚡ ดำเนินการ</span>`;
+        else statusHTML = `<span class="stt stt-waiting" onclick="changeStatus(${index})">⏳ รอคิว</span>`;
+
+        row.innerHTML = `
+            <td>${q.id}</td>
+            <td>${q.name}</td>
+            <td>${q.type}</td>
+            <td>${q.displayDate}</td>
+            <td>${statusHTML}</td>
+        `;
+        body.appendChild(row);
+    });
+    
+    localStorage.setItem('koyangi_data', JSON.stringify(queues));
+    filterQueue(); // กรองทันทีหลังวาดตาราง
+}
+
+function addQueue() {
+    const rawDate = document.getElementById('jobDate').value;
+    const name = document.getElementById('custName').value;
+    const type = document.getElementById('jobType').value;
+
+    if(!name || !rawDate) return alert("กรุณากรอกข้อมูลให้ครบถ้วนนะคะ");
+
+    // แปลงวันที่โชว์ dd/mm/yyyy
+    const dateParts = rawDate.split('-');
+    const displayDate = `${dateParts[2]}/${dateParts[1]}/${dateParts[0]}`;
+
+    const newQueue = {
+        id: "#" + (queues.length + 1).toString().padStart(3, '0'),
+        name: name,
+        type: type,
+        rawDate: rawDate,
+        displayDate: displayDate,
+        status: 'waiting'
+    };
+
+    queues.push(newQueue);
+    document.getElementById('custName').value = '';
+    toggleModal();
+    renderTable();
+}
+
+function changeStatus(index) {
+    const states = ['waiting', 'process', 'done'];
+    let current = states.indexOf(queues[index].status);
+    queues[index].status = states[(current + 1) % states.length];
+    renderTable();
+}
 
 function filterQueue() {
-    const input = document.getElementById("searchInput");
-    const filter = input.value.toUpperCase();
-    const table = document.getElementById("queueTable");
-    const tr = table.getElementsByTagName("tr");
+    const nameInput = document.getElementById("searchInput").value.toUpperCase();
+    const dateInput = document.getElementById("dateFilter").value;
+    const rows = document.querySelectorAll("#queueBody tr");
 
-    for (let i = 1; i < tr.length; i++) {
-        let textContent = tr[i].textContent || tr[i].innerText;
-        if (textContent.toUpperCase().indexOf(filter) > -1) {
-            tr[i].style.display = "";
+    rows.forEach(row => {
+        const rowName = row.getAttribute('data-name');
+        const rowDate = row.getAttribute('data-date');
+
+        const matchName = rowName.includes(nameInput);
+        const matchDate = !dateInput || rowDate === dateInput;
+
+        if(matchName && matchDate) {
+            row.style.display = "";
         } else {
-            tr[i].style.display = "none";
+            row.style.display = "none";
         }
+    });
+}
+
+function clearDateFilter() {
+    document.getElementById("dateFilter").value = "";
+    filterQueue();
+}
+
+function resetAll() {
+    if(confirm("ยืนยันการล้างข้อมูลทั้งหมดในเครื่องนี้?")) {
+        queues = [];
+        renderTable();
     }
 }
 
@@ -273,55 +250,24 @@ function toggleModal() {
     document.getElementById('addModal').classList.toggle('open');
 }
 
-function addQueue() {
-    const dateVal = document.getElementById('jobDate').value;
-    const name = document.getElementById('custName').value;
-    const type = document.getElementById('jobType').value;
+// --- เริ่มต้นระบบ ---
+window.onload = () => {
+    // เซตค่าปฏิทินใน Modal เป็นวันปัจจุบัน
+    const today = new Date().toISOString().split('T')[0];
+    document.getElementById('jobDate').value = today;
     
-    if(name === "" || dateVal === "") {
-        alert("กรุณากรอกข้อมูลให้ครบถ้วนนะคะ");
-        return;
-    }
+    renderTable();
+};
 
-    // จัดฟอร์แมตวันที่จาก yyyy-mm-dd เป็น dd/mm/yyyy
-    const dateArr = dateVal.split('-');
-    const formattedDate = `${dateArr[2]}/${dateArr[1]}/${dateArr[0]}`;
-
-    const table = document.getElementById("queueTable").getElementsByTagName('tbody')[0];
-    const rowCount = table.rows.length + 1;
-    const queueID = "#" + rowCount.toString().padStart(3, '0');
-
-    const newRow = table.insertRow();
-    newRow.innerHTML = `
-        <td>${queueID}</td>
-        <td>${name}</td>
-        <td>${type}</td>
-        <td>${formattedDate}</td>
-        <td><span class="stt stt-waiting">⏳ รอคิว</span></td>
-    `;
-
-    document.getElementById('custName').value = "";
-    toggleModal();
-    
-    newRow.scrollIntoView({ behavior: 'smooth' });
-    newRow.style.background = "rgba(255,51,51,0.2)";
-    setTimeout(() => { newRow.style.background = "transparent"; }, 2000);
-}
-
+// Particles (คงเดิม)
 const P = document.getElementById('pts');
-const symbols = ['✦', '★', '🐾', '🐈‍⬛', '✧'];
+const symbols = ['✦', '🐾', '🐈‍⬛'];
 symbols.forEach(e => {
-    for (let j = 0; j < 3; j++) {
+    for (let j = 0; j < 5; j++) {
         const d = document.createElement('div');
         d.className = 'pt';
         d.textContent = e;
-        d.style.cssText = `
-            left:${Math.random()*100}vw;
-            font-size:${10+Math.random()*10}px;
-            color:${['#ff3333','#ff8080','#b30000'][Math.floor(Math.random()*3)]};
-            animation-duration:${10+Math.random()*15}s;
-            animation-delay:${-Math.random()*20}s;
-        `;
+        d.style.cssText = `left:${Math.random()*100}vw; font-size:${10+Math.random()*10}px; color:#ff3333; animation-duration:${10+Math.random()*15}s; animation-delay:${-Math.random()*20}s;`;
         P.appendChild(d);
     }
 });
