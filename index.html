@@ -3,34 +3,46 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Koyangi Queue - Cute Edition 🐾</title>
+<title>Koyangi Queue - Mobile View 🐾</title>
 <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600&family=Itim&display=swap" rel="stylesheet">
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
 :root {
-    --main-pink: #FFB7C5; /* ชมพูพาสเทล */
-    --soft-peach: #FFF0F3; /* พื้นหลังนวลๆ */
-    --accent-mint: #B2E2D2; /* เขียวมินต์ */
-    --txt-brown: #6D4C41; /* น้ำตาลเข้มแทนสีดำเพื่อความนุ่มนวล */
+    --main-pink: #FFB7C5;
+    --soft-peach: #FFF0F3;
+    --txt-brown: #6D4C41;
     --white: #ffffff;
 }
 
+/* ตั้งค่าพื้นหลังหน้าจอคอม */
 body { 
-    font-family: 'Kanit', sans-serif; 
-    background-color: var(--soft-peach); 
-    color: var(--txt-brown);
+    background-color: #fce4ec; /* สีพื้นหลังข้างนอก wrapper */
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+/* --- Mobile Wrapper (จำกัดขนาดหน้าจอ) --- */
+.mobile-wrapper {
+    width: 100%;
+    max-width: 430px; /* ขนาดหน้าจอมือถือ */
+    background-color: var(--soft-peach);
+    min-height: 100vh;
+    position: relative;
+    box-shadow: 0 0 50px rgba(255, 183, 197, 0.4);
     overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
 }
 
 h1, h2, .topbar-brand { font-family: 'Itim', cursive; }
 
-/* Particles (เปลี่ยนเป็นฟองอากาศ/หัวใจ) */
-#pts { position: fixed; inset: 0; pointer-events: none; z-index: 0; }
+/* Particles */
+#pts { position: absolute; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
 .pt { position: absolute; animation: floating 6s ease-in-out infinite; opacity: 0.6; }
 @keyframes floating { 
-    0% { transform: translateY(110vh); opacity: 0; } 
-    50% { opacity: 0.8; }
-    100% { transform: translateY(-10vh) translateX(20px); opacity: 0; } 
+    0% { transform: translateY(110%); opacity: 0; } 
+    100% { transform: translateY(-10%); opacity: 0; } 
 }
 
 /* UI Elements */
@@ -39,170 +51,151 @@ h1, h2, .topbar-brand { font-family: 'Itim', cursive; }
     background: var(--white); 
     border-bottom: 3px dashed var(--main-pink); 
     display: flex; align-items: center; justify-content: space-between; 
-    padding: 0 20px; height: 65px;
+    padding: 0 20px; height: 60px;
 }
-.topbar-brand { font-size: 24px; color: var(--main-pink); text-shadow: 1px 1px var(--soft-peach); }
+.topbar-brand { font-size: 22px; color: var(--main-pink); }
 
 .hero { 
     background: var(--main-pink); 
     background-image: radial-gradient(circle, #ffcbd5 20%, transparent 20%);
-    background-size: 30px 30px;
-    padding: 40px 20px 60px; text-align: center; color: var(--white);
-    border-radius: 0 0 50px 50px;
+    background-size: 20px 20px;
+    padding: 30px 20px 50px; text-align: center; color: var(--white);
+    border-radius: 0 0 40px 40px;
 }
-.hero-title { font-size: 38px; text-shadow: 2px 2px rgba(0,0,0,0.1); }
+.hero-title { font-size: 32px; }
 
-/* Calendar Style */
+/* Calendar */
 .calendar-card { 
-    max-width: 380px; margin: -30px auto 30px; 
-    background: var(--white); border-radius: 30px; padding: 20px; 
+    width: 90%; margin: -25px auto 20px; 
+    background: var(--white); border-radius: 25px; padding: 15px; 
     position: relative; z-index: 10; 
-    box-shadow: 0 10px 25px rgba(255, 183, 197, 0.3);
+    box-shadow: 0 8px 20px rgba(255, 183, 197, 0.2);
 }
-.cal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
-.cal-btn { 
-    background: var(--soft-peach); border: none; color: var(--main-pink); 
-    border-radius: 12px; width: 35px; height: 35px; cursor: pointer; font-size: 20px;
-}
-.cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); text-align: center; gap: 5px; }
-.cal-day-name { color: var(--main-pink); font-weight: 600; font-size: 14px; padding-bottom: 10px; }
-.cal-date { 
-    padding: 10px 0; cursor: pointer; border-radius: 15px; 
-    font-size: 14px; transition: 0.3s; color: var(--txt-brown);
-}
-.cal-date:hover { background: var(--soft-peach); }
-.cal-date.active { background: var(--main-pink); color: white; font-weight: bold; }
-.cal-date.today { border: 2px solid var(--main-pink); }
+.cal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; font-size: 14px; }
+.cal-btn { background: var(--soft-peach); border: none; color: var(--main-pink); border-radius: 8px; width: 30px; height: 30px; }
+.cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); text-align: center; gap: 2px; }
+.cal-day-name { color: var(--main-pink); font-weight: 600; font-size: 12px; padding-bottom: 5px; }
+.cal-date { padding: 8px 0; cursor: pointer; border-radius: 12px; font-size: 13px; color: var(--txt-brown); }
+.cal-date.active { background: var(--main-pink); color: white; }
 
-/* Search & Table */
-.search-container { max-width: 500px; margin: 0 auto 20px; padding: 0 20px; }
+/* Search & Content */
+.search-container { padding: 0 20px; margin-bottom: 15px; }
 .search-input { 
-    width: 100%; padding: 15px 25px; border-radius: 30px; 
-    border: 2px solid var(--main-pink); background: var(--white); 
-    color: var(--txt-brown); outline: none; font-size: 16px;
+    width: 100%; padding: 12px 20px; border-radius: 25px; 
+    border: 2px solid var(--main-pink); background: var(--white); outline: none;
 }
 
-.content { max-width: 900px; margin: 0 auto; padding: 0 20px 120px; }
-.q-card { 
-    background: var(--white); border-radius: 25px; overflow: hidden; 
-    box-shadow: 0 8px 20px rgba(0,0,0,0.05);
-}
-.q-table { width: 100%; border-collapse: collapse; }
-.q-table th { background: #FFF5F7; color: var(--main-pink); padding: 18px; text-align: left; }
-.q-table td { padding: 18px; border-bottom: 1px solid #FFF0F3; }
+.content { padding: 0 20px 100px; flex: 1; }
+.q-card { background: var(--white); border-radius: 20px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.03); }
+.q-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.q-table th { background: #FFF5F7; color: var(--main-pink); padding: 12px; text-align: left; }
+.q-table td { padding: 12px; border-bottom: 1px solid #FFF0F3; }
 
-/* Status Badges */
-.stt { padding: 6px 14px; border-radius: 20px; font-size: 12px; font-weight: 600; cursor: pointer; border: none; }
+/* Status */
+.stt { padding: 5px 10px; border-radius: 15px; font-size: 11px; font-weight: 600; border: none; }
 .stt-waiting { background: #FFF9C4; color: #FBC02D; }
 .stt-process { background: #E1F5FE; color: #039BE5; }
 .stt-done { background: #E8F5E9; color: #43A047; }
 
-/* Bottom Nav */
+/* Bottom Nav (ปรับให้ Fix ภายใน Wrapper) */
 .bottom-nav { 
-    position: fixed; bottom: 0; left: 0; right: 0; height: 80px; 
+    position: absolute; bottom: 0; width: 100%; height: 75px; 
     background: var(--white); border-top: 3px dashed var(--main-pink); 
-    display: flex; justify-content: space-around; align-items: center; z-index: 1000;
+    display: flex; justify-content: space-around; align-items: center;
 }
-.nav-item { display: flex; flex-direction: column; align-items: center; color: var(--main-pink); font-size: 12px; }
+.nav-item { display: flex; flex-direction: column; align-items: center; color: var(--main-pink); font-size: 11px; cursor: pointer; }
 .nav-add { 
-    width: 65px; height: 65px; background: var(--main-pink); 
+    width: 60px; height: 60px; background: var(--main-pink); 
     border-radius: 50%; display: flex; align-items: center; justify-content: center; 
-    margin-top: -45px; border: 6px solid var(--soft-peach); color: white; font-size: 30px;
-    box-shadow: 0 5px 15px rgba(255,183,197,0.5);
+    margin-top: -40px; border: 5px solid var(--soft-peach); color: white; font-size: 28px;
 }
 
 /* Modal */
+.modal { 
+    position: absolute; inset: 0; background: rgba(0,0,0,0.5); 
+    display: none; align-items: center; justify-content: center; z-index: 2000;
+}
+.modal.open { display: flex; }
 .modal-content { 
-    background: var(--white); border-radius: 35px; border: 4px solid var(--main-pink);
-    max-width: 380px; padding: 30px; 
-}
-.form-group input, .form-group select { 
-    width: 100%; padding: 12px; border-radius: 15px; border: 2px solid var(--soft-peach);
-    background: #FAFAFA; outline: none; margin-bottom: 10px;
-}
-.btn-submit { 
-    width: 100%; padding: 15px; background: var(--main-pink); color: white; 
-    border: none; border-radius: 20px; font-weight: 600; cursor: pointer;
+    background: var(--white); border-radius: 30px; width: 85%; padding: 25px; 
+    border: 3px solid var(--main-pink);
 }
 </style>
 </head>
 <body>
 
-<div id="pts"></div>
+<div class="mobile-wrapper">
+    <div id="pts"></div>
 
-<div class="topbar">
-    <div class="topbar-brand">Koyangi Store 🐾</div>
-    <div style="font-size: 12px; color: var(--main-pink); font-weight: bold;">Menu ☰</div>
-</div>
-
-<div class="hero">
-    <h1 class="hero-title">เช็คคิวงานนะเมี๊ยว~</h1>
-    <p style="font-size: 14px; margin-top: 5px; opacity: 0.9;">ร้านรับทำเว็บสไตล์คุณออมเองค่ะ ✨</p>
-</div>
-
-<div class="calendar-card">
-    <div class="cal-header">
-        <button class="cal-btn" onclick="changeMonth(-1)">‹</button>
-        <div id="currentMonthLabel" style="font-weight: 700; color: var(--txt-brown);"></div>
-        <button class="cal-btn" onclick="changeMonth(1)">›</button>
+    <div class="topbar">
+        <div class="topbar-brand">Koyangi Store 🐾</div>
+        <div style="font-size: 18px;">🛒</div>
     </div>
-    <div class="cal-grid">
-        <div class="cal-day-name">Sun</div><div class="cal-day-name">Mon</div><div class="cal-day-name">Tue</div>
-        <div class="cal-day-name">Wed</div><div class="cal-day-name">Thu</div><div class="cal-day-name">Fri</div><div class="cal-day-name">Sat</div>
-    </div>
-    <div id="calDates" class="cal-grid"></div>
-</div>
 
-<div class="search-container">
-    <input type="text" id="searchInput" class="search-input" placeholder="🔍 ค้นหาชื่อคนน่ารัก..." onkeyup="renderTable()">
-</div>
-
-<div class="content">
-    <div class="q-card">
-        <table class="q-table" id="queueTable">
-            <thead>
-                <tr>
-                    <th>คิว</th>
-                    <th>รายการ</th>
-                    <th>สถานะ</th>
-                </tr>
-            </thead>
-            <tbody id="queueBody"></tbody>
-        </table>
+    <div class="hero">
+        <h1 class="hero-title">เช็คคิวกันเมี๊ยว~</h1>
+        <p style="font-size: 12px; opacity: 0.9;">ยินดีต้อนรับคุณลูกค้าที่น่ารักค่ะ ✨</p>
     </div>
-</div>
 
-<div class="bottom-nav">
-    <div class="nav-item" onclick="location.reload()">
-        <span style="font-size: 20px;">🏡</span><span>หน้าหลัก</span>
-    </div>
-    <div class="nav-add" onclick="toggleModal()"><span>+</span></div>
-    <div class="nav-item" onclick="resetData()">
-        <span style="font-size: 20px;">🍓</span><span>ล้างข้อมูล</span>
-    </div>
-</div>
-
-<div class="modal" id="addModal">
-    <div class="modal-content">
-        <h3 style="text-align:center; color:var(--main-pink); margin-bottom:20px; font-family:'Itim'; font-size: 24px;">เพิ่มคิวใหม่จ้า ✨</h3>
-        <div class="form-group">
-            <input type="date" id="jobDate">
-            <input type="text" id="custName" placeholder="ชื่อเล่นลูกค้า">
-            <select id="jobType">
-                <option value="เว็บไบโอพรีเมียม">🎀 เว็บไบโอพรีเมียม</option>
-                <option value="เว็บรับเติมเกม">🎮 เว็บรับเติมเกม</option>
-                <option value="ออกแบบป้าย">🎨 ออกแบบป้ายร้าน</option>
-                <option value="สติกเกอร์">🌸 สติกเกอร์/ลายน้ำ</option>
-            </select>
+    <div class="calendar-card">
+        <div class="cal-header">
+            <button class="cal-btn" onclick="changeMonth(-1)">‹</button>
+            <div id="currentMonthLabel" style="font-weight: 700;"></div>
+            <button class="cal-btn" onclick="changeMonth(1)">›</button>
         </div>
-        <button class="btn-submit" onclick="addQueue()">บันทึกข้อมูล 🐾</button>
-        <button onclick="toggleModal()" style="background:transparent; color:#aaa; border:none; width:100%; margin-top:15px; cursor:pointer;">ไว้ก่อนนะ</button>
+        <div class="cal-grid">
+            <div class="cal-day-name">S</div><div class="cal-day-name">M</div><div class="cal-day-name">T</div>
+            <div class="cal-day-name">W</div><div class="cal-day-name">T</div><div class="cal-day-name">F</div><div class="cal-day-name">S</div>
+        </div>
+        <div id="calDates" class="cal-grid"></div>
+    </div>
+
+    <div class="search-container">
+        <input type="text" id="searchInput" class="search-input" placeholder="🔍 ค้นหาชื่อของคุณ..." onkeyup="renderTable()">
+    </div>
+
+    <div class="content">
+        <div class="q-card">
+            <table class="q-table">
+                <thead>
+                    <tr>
+                        <th>คิว</th>
+                        <th>ลูกค้า</th>
+                        <th>สถานะ</th>
+                    </tr>
+                </thead>
+                <tbody id="queueBody"></tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="bottom-nav">
+        <div class="nav-item" onclick="location.reload()"><span>🏡</span><span>หน้าหลัก</span></div>
+        <div class="nav-add" onclick="toggleModal()"><span>+</span></div>
+        <div class="nav-item" onclick="resetData()"><span>🍓</span><span>ล้างข้อมูล</span></div>
+    </div>
+
+    <div class="modal" id="addModal">
+        <div class="modal-content">
+            <h3 style="text-align:center; color:var(--main-pink); margin-bottom:15px; font-family:'Itim';">เพิ่มคิวใหม่ ✨</h3>
+            <div style="display:flex; flex-direction:column; gap:10px;">
+                <input type="date" id="jobDate" style="padding:10px; border-radius:10px; border:1px solid #ddd;">
+                <input type="text" id="custName" placeholder="ชื่อเล่นลูกค้า" style="padding:10px; border-radius:10px; border:1px solid #ddd;">
+                <select id="jobType" style="padding:10px; border-radius:10px; border:1px solid #ddd;">
+                    <option value="เว็บไบโอ">🎀 เว็บไบโอ</option>
+                    <option value="เติมเกม">🎮 เว็บเติมเกม</option>
+                    <option value="ป้าย">🎨 ออกแบบป้าย</option>
+                </select>
+                <button class="btn-submit" onclick="addQueue()" style="padding:12px; background:var(--main-pink); color:white; border:none; border-radius:15px; font-weight:600; margin-top:5px;">บันทึก 🐾</button>
+                <button onclick="toggleModal()" style="background:transparent; color:#aaa; border:none; cursor:pointer; font-size:12px;">ปิด</button>
+            </div>
+        </div>
     </div>
 </div>
 
 <script>
-// (Keep the same logic from previous version, just updating IDs if needed)
-let queues = JSON.parse(localStorage.getItem('koyangi_cute_v1')) || [];
+// --- ส่วน Logic (เหมือนเดิมแต่ปรับเปลี่ยนที่เก็บข้อมูลเล็กน้อยเพื่อให้แยกจากเวอร์ชันเก่า) ---
+let queues = JSON.parse(localStorage.getItem('koyangi_mobile_v1')) || [];
 let currentViewDate = new Date();
 let selectedDateStr = "";
 
@@ -222,9 +215,8 @@ function renderCalendar() {
     for (let d = 1; d <= daysInMonth; d++) {
         const dateStr = `${year}-${(month+1).toString().padStart(2,'0')}-${d.toString().padStart(2,'0')}`;
         const isActive = selectedDateStr === dateStr;
-        const isToday = new Date().toISOString().split('T')[0] === dateStr;
         const dateDiv = document.createElement('div');
-        dateDiv.className = `cal-date ${isActive ? 'active' : ''} ${isToday ? 'today' : ''}`;
+        dateDiv.className = `cal-date ${isActive ? 'active' : ''}`;
         dateDiv.innerText = d;
         dateDiv.onclick = () => { selectedDateStr = (selectedDateStr === dateStr) ? "" : dateStr; renderCalendar(); renderTable(); };
         calDates.appendChild(dateDiv);
@@ -232,7 +224,7 @@ function renderCalendar() {
 }
 
 function renderTable() {
-    const body = document.getElementById('queueBody');
+    const body = document.querySelector('#queueBody');
     const searchTerm = document.getElementById('searchInput').value.toUpperCase();
     body.innerHTML = '';
     const filtered = queues.filter(q => q.name.toUpperCase().includes(searchTerm) && (selectedDateStr === "" || q.rawDate === selectedDateStr));
@@ -240,21 +232,21 @@ function renderTable() {
     filtered.forEach(q => {
         const row = document.createElement('tr');
         let sttClass = q.status === 'done' ? 'stt-done' : (q.status === 'process' ? 'stt-process' : 'stt-waiting');
-        let sttText = q.status === 'done' ? 'สำเร็จแล้ว' : (q.status === 'process' ? 'กำลังทำ' : 'รอสักครู่');
+        let sttText = q.status === 'done' ? 'สำเร็จ' : (q.status === 'process' ? 'ทำอยู่' : 'รอคิว');
         row.innerHTML = `
-            <td style="font-weight:bold; color:var(--main-pink)">${q.id}</td>
-            <td><strong>${q.name}</strong><br><small style="color:#aaa">${q.type}</small></td>
+            <td style="color:var(--main-pink); font-weight:600;">${q.id}</td>
+            <td><strong>${q.name}</strong><br><small style="font-size:10px; color:#999;">${q.type}</small></td>
             <td><button class="stt ${sttClass}" onclick="changeStatus('${q.id}')">${sttText}</button></td>
         `;
         body.appendChild(row);
     });
-    localStorage.setItem('koyangi_cute_v1', JSON.stringify(queues));
+    localStorage.setItem('koyangi_mobile_v1', JSON.stringify(queues));
 }
 
 function addQueue() {
     const name = document.getElementById('custName').value;
     const rawDate = document.getElementById('jobDate').value;
-    if(!name || !rawDate) return alert("ใสข้อมูลให้ครบก่อนนะจ๊ะ");
+    if(!name || !rawDate) return alert("ใส่ชื่อด้วยนะเมี๊ยว~");
     queues.push({
         id: "Q" + (queues.length + 1).toString().padStart(2, '0'),
         name, rawDate, type: document.getElementById('jobType').value, status: 'waiting'
@@ -272,24 +264,24 @@ function changeStatus(id) {
 
 function toggleModal() { document.getElementById('addModal').classList.toggle('open'); }
 function changeMonth(dir) { currentViewDate.setMonth(currentViewDate.getMonth() + dir); renderCalendar(); }
-function resetData() { if(confirm("ล้างคิวทั้งหมดเลยหรอคะ?")) { queues = []; renderTable(); } }
+function resetData() { if(confirm("ล้างข้อมูลคิวทั้งหมด?")) { queues = []; renderTable(); } }
 
 window.onload = () => {
     document.getElementById('jobDate').value = new Date().toISOString().split('T')[0];
     renderCalendar(); renderTable();
 };
 
-// Cute Floating Particles
+// Particles ภายใน Wrapper
 const P = document.getElementById('pts');
-['🌸', '🎀', '☁️', '🐾', '✨'].forEach(e => {
-    for (let j = 0; j < 5; j++) {
+['🌸', '🐾', '✨'].forEach(e => {
+    for (let j = 0; j < 4; j++) {
         const d = document.createElement('div');
         d.className = 'pt';
         d.textContent = e;
-        d.style.left = Math.random() * 100 + 'vw';
-        d.style.fontSize = (15 + Math.random() * 20) + 'px';
-        d.style.animationDuration = (5 + Math.random() * 10) + 's';
-        d.style.animationDelay = -Math.random() * 10 + 's';
+        d.style.left = Math.random() * 100 + '%';
+        d.style.fontSize = (12 + Math.random() * 15) + 'px';
+        d.style.animationDuration = (4 + Math.random() * 6) + 's';
+        d.style.animationDelay = -Math.random() * 5 + 's';
         P.appendChild(d);
     }
 });
