@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Koyangi Queue - Floating Nav 🐾</title>
+<title>Koyangi Queue - Custom ID 🐾</title>
 <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600&family=Itim&display=swap" rel="stylesheet">
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -14,15 +14,14 @@
     --white: #ffffff;
 }
 
-/* ตั้งค่าพื้นหลังหน้าจอคอม */
 body { 
     background-color: #fce4ec; 
     display: flex;
     justify-content: center;
     min-height: 100vh;
+    font-family: 'Kanit', sans-serif;
 }
 
-/* --- Mobile Wrapper --- */
 .mobile-wrapper {
     width: 100%;
     max-width: 430px; 
@@ -37,19 +36,13 @@ body {
 
 h1, h2, .topbar-brand { font-family: 'Itim', cursive; }
 
-/* Particles */
 #pts { position: absolute; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
 .pt { position: absolute; animation: floating 6s ease-in-out infinite; opacity: 0.6; }
-@keyframes floating { 
-    0% { transform: translateY(110%); opacity: 0; } 
-    100% { transform: translateY(-10%); opacity: 0; } 
-}
+@keyframes floating { 0% { transform: translateY(110%); opacity: 0; } 100% { transform: translateY(-10%); opacity: 0; } }
 
-/* UI Elements */
 .topbar { 
     position: sticky; top: 0; z-index: 100; 
-    background: var(--white); 
-    border-bottom: 3px dashed var(--main-pink); 
+    background: var(--white); border-bottom: 3px dashed var(--main-pink); 
     display: flex; align-items: center; justify-content: space-between; 
     padding: 0 20px; height: 60px;
 }
@@ -64,7 +57,6 @@ h1, h2, .topbar-brand { font-family: 'Itim', cursive; }
 }
 .hero-title { font-size: 32px; }
 
-/* Calendar */
 .calendar-card { 
     width: 90%; margin: -25px auto 20px; 
     background: var(--white); border-radius: 25px; padding: 15px; 
@@ -75,66 +67,46 @@ h1, h2, .topbar-brand { font-family: 'Itim', cursive; }
 .cal-btn { background: var(--soft-peach); border: none; color: var(--main-pink); border-radius: 8px; width: 30px; height: 30px; cursor: pointer; }
 .cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); text-align: center; gap: 2px; }
 .cal-day-name { color: var(--main-pink); font-weight: 600; font-size: 12px; padding-bottom: 5px; }
-.cal-date { padding: 8px 0; cursor: pointer; border-radius: 12px; font-size: 13px; color: var(--txt-brown); transition: 0.2s; }
+.cal-date { padding: 8px 0; cursor: pointer; border-radius: 12px; font-size: 13px; color: var(--txt-brown); }
 .cal-date.active { background: var(--main-pink); color: white; }
 
-/* Search & Content */
 .search-container { padding: 0 20px; margin-bottom: 15px; }
-.search-input { 
-    width: 100%; padding: 12px 20px; border-radius: 25px; 
-    border: 2px solid var(--main-pink); background: var(--white); outline: none; font-family: 'Kanit';
-}
+.search-input { width: 100%; padding: 12px 20px; border-radius: 25px; border: 2px solid var(--main-pink); outline: none; }
 
-.content { padding: 0 20px 120px; flex: 1; } /* เผื่อพื้นที่ให้ Floating Nav */
+.content { padding: 0 20px 120px; flex: 1; }
 .q-card { background: var(--white); border-radius: 20px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.03); }
 .q-table { width: 100%; border-collapse: collapse; font-size: 13px; }
 .q-table th { background: #FFF5F7; color: var(--main-pink); padding: 12px; text-align: left; }
 .q-table td { padding: 12px; border-bottom: 1px solid #FFF0F3; }
 
-/* Status */
 .stt { padding: 5px 10px; border-radius: 15px; font-size: 11px; font-weight: 600; border: none; cursor: pointer; }
 .stt-waiting { background: #FFF9C4; color: #FBC02D; }
 .stt-process { background: #E1F5FE; color: #039BE5; }
 .stt-done { background: #E8F5E9; color: #43A047; }
 
-/* --- Floating Bottom Nav --- */
 .nav-container {
-    position: absolute;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 90%;
-    height: 65px;
-    background: var(--white);
-    border-radius: 25px;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    box-shadow: 0 10px 25px rgba(255, 183, 197, 0.4);
-    z-index: 1000;
-    border: 2px solid var(--main-pink);
+    position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%);
+    width: 90%; height: 65px; background: var(--white); border-radius: 25px;
+    display: flex; justify-content: space-around; align-items: center;
+    box-shadow: 0 10px 25px rgba(255, 183, 197, 0.4); z-index: 1000; border: 2px solid var(--main-pink);
 }
 .nav-item { display: flex; flex-direction: column; align-items: center; color: var(--main-pink); font-size: 10px; cursor: pointer; }
-.nav-item span:first-child { font-size: 20px; margin-bottom: 2px; }
 .nav-add { 
-    width: 55px; height: 55px; background: var(--main-pink); 
-    border-radius: 20px; display: flex; align-items: center; justify-content: center; 
-    margin-top: -45px; border: 4px solid var(--white); color: white; font-size: 26px;
-    box-shadow: 0 5px 15px rgba(255,183,197,0.4);
-    transition: 0.3s;
+    width: 55px; height: 55px; background: var(--main-pink); border-radius: 20px; 
+    display: flex; align-items: center; justify-content: center; margin-top: -45px; 
+    border: 4px solid var(--white); color: white; font-size: 26px; box-shadow: 0 5px 15px rgba(255,183,197,0.4);
 }
-.nav-add:active { transform: scale(0.9) rotate(90deg); }
 
-/* Modal */
-.modal { 
-    position: absolute; inset: 0; background: rgba(0,0,0,0.4); 
-    display: none; align-items: center; justify-content: center; z-index: 2000;
-}
+.modal { position: absolute; inset: 0; background: rgba(0,0,0,0.4); display: none; align-items: center; justify-content: center; z-index: 2000; }
 .modal.open { display: flex; }
-.modal-content { 
-    background: var(--white); border-radius: 30px; width: 85%; padding: 25px; 
-    border: 3px solid var(--main-pink); box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+.modal-content { background: var(--white); border-radius: 30px; width: 85%; padding: 25px; border: 3px solid var(--main-pink); }
+
+/* Input Styles */
+.form-group { display: flex; flex-direction: column; gap: 10px; }
+.form-group input, .form-group select { 
+    padding: 12px; border-radius: 12px; border: 2px solid var(--soft-peach); outline: none; font-family: 'Kanit';
 }
+.label-hint { font-size: 11px; color: var(--main-pink); margin-top: -8px; margin-left: 5px; }
 </style>
 </head>
 <body>
@@ -149,18 +121,14 @@ h1, h2, .topbar-brand { font-family: 'Itim', cursive; }
 
     <div class="hero">
         <h1 class="hero-title">เช็คคิวกันเมี๊ยว~</h1>
-        <p style="font-size: 12px; opacity: 0.9;">ร้านของคุณออม ยินดีให้บริการค่ะ ✨</p>
+        <p style="font-size: 12px; opacity: 0.9;">เลือกจองคิวที่คุณออมชอบได้เลย ✨</p>
     </div>
 
     <div class="calendar-card">
         <div class="cal-header">
             <button class="cal-btn" onclick="changeMonth(-1)">‹</button>
-            <div id="currentMonthLabel" style="font-weight: 700; color: var(--txt-brown);"></div>
+            <div id="currentMonthLabel" style="font-weight: 700;"></div>
             <button class="cal-btn" onclick="changeMonth(1)">›</button>
-        </div>
-        <div class="cal-grid">
-            <div class="cal-day-name">S</div><div class="cal-day-name">M</div><div class="cal-day-name">T</div>
-            <div class="cal-day-name">W</div><div class="cal-day-name">T</div><div class="cal-day-name">F</div><div class="cal-day-name">S</div>
         </div>
         <div id="calDates" class="cal-grid"></div>
     </div>
@@ -185,76 +153,45 @@ h1, h2, .topbar-brand { font-family: 'Itim', cursive; }
     </div>
 
     <div class="nav-container">
-        <div class="nav-item" onclick="location.reload()">
-            <span>🏡</span><span>หน้าหลัก</span>
-        </div>
-        <div class="nav-add" onclick="toggleModal()">
-            <span>+</span>
-        </div>
-        <div class="nav-item" onclick="resetData()">
-            <span>🗑️</span><span>ล้างข้อมูล</span>
-        </div>
+        <div class="nav-item" onclick="location.reload()"><span>🏡</span><span>หน้าหลัก</span></div>
+        <div class="nav-add" onclick="toggleModal()"><span>+</span></div>
+        <div class="nav-item" onclick="resetData()"><span>🗑️</span><span>ล้างข้อมูล</span></div>
     </div>
 
     <div class="modal" id="addModal">
         <div class="modal-content">
             <h3 style="text-align:center; color:var(--main-pink); margin-bottom:15px; font-family:'Itim'; font-size: 22px;">เพิ่มคิวใหม่ ✨</h3>
-            <div style="display:flex; flex-direction:column; gap:12px;">
-                <input type="date" id="jobDate" style="padding:12px; border-radius:12px; border:2px solid var(--soft-peach); outline:none; font-family:'Kanit';">
-                <input type="text" id="custName" placeholder="ชื่อเล่นลูกค้า" style="padding:12px; border-radius:12px; border:2px solid var(--soft-peach); outline:none; font-family:'Kanit';">
-                <select id="jobType" style="padding:12px; border-radius:12px; border:2px solid var(--soft-peach); outline:none; font-family:'Kanit';">
+            <div class="form-group">
+                <input type="number" id="customId" placeholder="ระบุเลขคิว (เช่น 01, 10)">
+                <p class="label-hint">*หากไม่ระบุ จะรันต่อให้เองค่ะ</p>
+                <input type="date" id="jobDate">
+                <input type="text" id="custName" placeholder="ชื่อเล่นลูกค้า">
+                <select id="jobType">
                     <option value="เว็บไบโอ">🎀 เว็บไบโอ</option>
                     <option value="เติมเกม">🎮 เว็บเติมเกม</option>
                     <option value="ป้ายร้าน">🎨 ออกแบบป้าย</option>
                     <option value="สติกเกอร์">🌸 สติกเกอร์</option>
                 </select>
-                <button class="btn-submit" onclick="addQueue()" style="padding:14px; background:var(--main-pink); color:white; border:none; border-radius:18px; font-weight:600; cursor:pointer; font-size:16px;">บันทึกข้อมูล 🐾</button>
-                <button onclick="toggleModal()" style="background:transparent; color:#bbb; border:none; cursor:pointer; font-size:13px; margin-top:5px;">ปิดหน้าต่าง</button>
+                <button onclick="addQueue()" style="padding:14px; background:var(--main-pink); color:white; border:none; border-radius:18px; font-weight:600; cursor:pointer; font-size:16px;">บันทึกข้อมูล 🐾</button>
+                <button onclick="toggleModal()" style="background:transparent; color:#bbb; border:none; cursor:pointer; font-size:13px;">ปิด</button>
             </div>
         </div>
     </div>
 </div>
 
 <script>
-// --- Data Logic ---
-let queues = JSON.parse(localStorage.getItem('koyangi_float_v1')) || [];
+let queues = JSON.parse(localStorage.getItem('koyangi_custom_v1')) || [];
 let currentViewDate = new Date();
 let selectedDateStr = "";
-
-const monthsTH = ["มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน", "พฤษภาคม", "มิถุนายน", "กรกฎาคม", "สิงหาคม", "กันยายน", "ตุลาคม", "พฤศจิกายน", "ธันวาคม"];
-
-function renderCalendar() {
-    const calDates = document.getElementById('calDates');
-    const label = document.getElementById('currentMonthLabel');
-    calDates.innerHTML = '';
-    const year = currentViewDate.getFullYear();
-    const month = currentViewDate.getMonth();
-    label.innerText = `${monthsTH[month]} ${year + 543}`;
-    const firstDay = new Date(year, month, 1).getDay();
-    const daysInMonth = new Date(year, month + 1, 0).getDate();
-
-    for (let i = 0; i < firstDay; i++) calDates.innerHTML += `<div></div>`;
-    for (let d = 1; d <= daysInMonth; d++) {
-        const dateStr = `${year}-${(month+1).toString().padStart(2,'0')}-${d.toString().padStart(2,'0')}`;
-        const isActive = selectedDateStr === dateStr;
-        const isToday = new Date().toISOString().split('T')[0] === dateStr;
-        const dateDiv = document.createElement('div');
-        dateDiv.className = `cal-date ${isActive ? 'active' : ''}`;
-        if(isToday) dateDiv.style.borderBottom = "2px solid var(--main-pink)";
-        dateDiv.innerText = d;
-        dateDiv.onclick = () => { 
-            selectedDateStr = (selectedDateStr === dateStr) ? "" : dateStr; 
-            renderCalendar(); 
-            renderTable(); 
-        };
-        calDates.appendChild(dateDiv);
-    }
-}
 
 function renderTable() {
     const body = document.querySelector('#queueBody');
     const searchTerm = document.getElementById('searchInput').value.toUpperCase();
     body.innerHTML = '';
+    
+    // เรียงลำดับคิวตามตัวเลข ID (Q01 -> Q02)
+    queues.sort((a, b) => a.id.localeCompare(b.id, undefined, {numeric: true}));
+
     const filtered = queues.filter(q => q.name.toUpperCase().includes(searchTerm) && (selectedDateStr === "" || q.rawDate === selectedDateStr));
 
     filtered.forEach(q => {
@@ -268,18 +205,36 @@ function renderTable() {
         `;
         body.appendChild(row);
     });
-    localStorage.setItem('koyangi_float_v1', JSON.stringify(queues));
+    localStorage.setItem('koyangi_custom_v1', JSON.stringify(queues));
 }
 
 function addQueue() {
     const name = document.getElementById('custName').value;
     const rawDate = document.getElementById('jobDate').value;
-    if(!name || !rawDate) return alert("รบกวนระบุข้อมูลด้วยนะเมี๊ยว~");
+    const customIdVal = document.getElementById('customId').value;
+    
+    if(!name || !rawDate) return alert("ใส่ข้อมูลให้ครบก่อนนะเมี๊ยว~");
+
+    let finalId = "";
+    if(customIdVal) {
+        // ถ้าคุณออมใส่เลขเอง
+        finalId = "Q" + customIdVal.padStart(2, '0');
+        // เช็คว่าซ้ำไหม
+        if(queues.some(q => q.id === finalId)) {
+            return alert("คิว " + finalId + " มีคนจองแล้วจ้า เลือกเลขอื่นนะ!");
+        }
+    } else {
+        // ถ้ารันอัตโนมัติ
+        finalId = "Q" + (queues.length + 1).toString().padStart(2, '0');
+    }
+
     queues.push({
-        id: "Q" + (queues.length + 1).toString().padStart(2, '0'),
+        id: finalId,
         name, rawDate, type: document.getElementById('jobType').value, status: 'waiting'
     });
+
     document.getElementById('custName').value = '';
+    document.getElementById('customId').value = '';
     toggleModal(); 
     renderTable();
 }
@@ -292,25 +247,42 @@ function changeStatus(id) {
 }
 
 function toggleModal() { document.getElementById('addModal').classList.toggle('open'); }
-function changeMonth(dir) { currentViewDate.setMonth(currentViewDate.getMonth() + dir); renderCalendar(); }
-function resetData() { if(confirm("ต้องการล้างคิวทั้งหมดใช่ไหมคะ?")) { queues = []; renderTable(); } }
 
+// --- ส่วน Calendar & Decor (เหมือนเดิม) ---
+const monthsTH = ["มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน", "พฤษภาคม", "มิถุนายน", "กรกฎาคม", "สิงหาคม", "กันยายน", "ตุลาคม", "พฤศจิกายน", "ธันวาคม"];
+function renderCalendar() {
+    const calDates = document.getElementById('calDates');
+    const label = document.getElementById('currentMonthLabel');
+    calDates.innerHTML = '<div class="cal-day-name">S</div><div class="cal-day-name">M</div><div class="cal-day-name">T</div><div class="cal-day-name">W</div><div class="cal-day-name">T</div><div class="cal-day-name">F</div><div class="cal-day-name">S</div>';
+    const year = currentViewDate.getFullYear();
+    const month = currentViewDate.getMonth();
+    label.innerText = `${monthsTH[month]} ${year + 543}`;
+    const firstDay = new Date(year, month, 1).getDay();
+    const daysInMonth = new Date(year, month + 1, 0).getDate();
+    for (let i = 0; i < firstDay; i++) calDates.innerHTML += `<div></div>`;
+    for (let d = 1; d <= daysInMonth; d++) {
+        const dateStr = `${year}-${(month+1).toString().padStart(2,'0')}-${d.toString().padStart(2,'0')}`;
+        const isActive = selectedDateStr === dateStr;
+        const dateDiv = document.createElement('div');
+        dateDiv.className = `cal-date ${isActive ? 'active' : ''}`;
+        dateDiv.innerText = d;
+        dateDiv.onclick = () => { selectedDateStr = (selectedDateStr === dateStr) ? "" : dateStr; renderCalendar(); renderTable(); };
+        calDates.appendChild(dateDiv);
+    }
+}
+function changeMonth(dir) { currentViewDate.setMonth(currentViewDate.getMonth() + dir); renderCalendar(); }
+function resetData() { if(confirm("ล้างคิวทั้งหมด?")) { queues = []; renderTable(); } }
 window.onload = () => {
     document.getElementById('jobDate').value = new Date().toISOString().split('T')[0];
     renderCalendar(); renderTable();
 };
-
-// Particles Animation
 const P = document.getElementById('pts');
-['🌸', '🐾', '✨', '☁️'].forEach(e => {
+['🌸', '🐾', '✨'].forEach(e => {
     for (let j = 0; j < 4; j++) {
         const d = document.createElement('div');
-        d.className = 'pt';
-        d.textContent = e;
+        d.className = 'pt'; d.textContent = e;
         d.style.left = Math.random() * 100 + '%';
-        d.style.fontSize = (12 + Math.random() * 15) + 'px';
         d.style.animationDuration = (5 + Math.random() * 5) + 's';
-        d.style.animationDelay = -Math.random() * 5 + 's';
         P.appendChild(d);
     }
 });
